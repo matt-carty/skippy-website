@@ -11,7 +11,11 @@ export default {
         secondary: 'var(--aw-color-secondary)',
         accent: 'var(--aw-color-accent)',
         default: 'var(--aw-color-text-default)',
+        heading: 'var(--aw-color-text-heading)',
         muted: 'var(--aw-color-text-muted)',
+        surface: 'var(--aw-color-surface-soft)',
+        'brand-cyan': 'var(--aw-color-brand-cyan)',
+        'brand-orange': 'var(--aw-color-brand-orange)',
       },
       fontFamily: {
         sans: ['var(--aw-font-sans, ui-sans-serif)', ...defaultTheme.fontFamily.sans],
