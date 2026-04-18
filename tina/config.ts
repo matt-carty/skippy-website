@@ -1,58 +1,131 @@
-import { defineConfig } from "tinacms";
+import { defineConfig } from 'tinacms';
+import type { TinaField } from 'tinacms';
 
-// Your hosting provider likely exposes this as an environment variable
+/**
+ * Matches `post` in `src/content/config.ts` (loader: `src/data/post`).
+ *
+ * - **Posts (Markdown)** — safe to edit in Tina.
+ * - **Posts (MDX)** — same fields; files that use `import` in the body (e.g. demos) can be
+ *   overwritten by Tina’s editor in ways that drop those imports. Prefer editing those in the
+ *   repo, or avoid re-saving from Tina unless the body is plain markdown/MDX.
+ */
+const postFields: TinaField[] = [
+  {
+    type: 'string',
+    name: 'title',
+    label: 'Title',
+    isTitle: true,
+    required: true,
+  },
+  {
+    type: 'datetime',
+    name: 'publishDate',
+    label: 'Publish date',
+  },
+  {
+    type: 'datetime',
+    name: 'updateDate',
+    label: 'Last updated',
+  },
+  {
+    type: 'boolean',
+    name: 'draft',
+    label: 'Draft',
+  },
+  {
+    type: 'string',
+    name: 'excerpt',
+    label: 'Excerpt',
+    ui: {
+      component: 'textarea',
+    },
+  },
+  {
+    type: 'string',
+    name: 'image',
+    label: 'Cover image URL',
+  },
+  {
+    type: 'string',
+    name: 'category',
+    label: 'Category',
+  },
+  {
+    type: 'string',
+    name: 'tags',
+    label: 'Tags',
+    list: true,
+  },
+  {
+    type: 'string',
+    name: 'author',
+    label: 'Author',
+  },
+  {
+    type: 'object',
+    name: 'metadata',
+    label: 'SEO (optional)',
+    fields: [
+      {
+        type: 'string',
+        name: 'canonical',
+        label: 'Canonical URL',
+      },
+      {
+        type: 'object',
+        name: 'robots',
+        label: 'Robots',
+        fields: [
+          { type: 'boolean', name: 'index', label: 'Index' },
+          { type: 'boolean', name: 'follow', label: 'Follow' },
+        ],
+      },
+    ],
+  },
+  {
+    type: 'rich-text',
+    name: 'body',
+    label: 'Body',
+    isBody: true,
+  },
+];
+
 const branch =
-  process.env.GITHUB_BRANCH ||
-  process.env.VERCEL_GIT_COMMIT_REF ||
-  process.env.HEAD ||
-  "main";
+  process.env.GITHUB_BRANCH || process.env.VERCEL_GIT_COMMIT_REF || process.env.HEAD || 'main';
 
 export default defineConfig({
   branch,
 
-  // Get this from tina.io
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
-  // Get this from tina.io
   token: process.env.TINA_TOKEN,
 
   build: {
-    outputFolder: "admin",
-    publicFolder: "public",
+    outputFolder: 'admin',
+    publicFolder: 'public',
   },
-  // Uncomment to allow cross-origin requests from non-localhost origins
-  // during local development (e.g. GitHub Codespaces, Gitpod, Docker).
-  // Use 'private' to allow all private-network IPs (WSL2, Docker, etc.)
-  // server: {
-  //   allowedOrigins: ['https://your-codespace.github.dev'],
-  // },
+
   media: {
     tina: {
-      mediaRoot: "",
-      publicFolder: "public",
+      mediaRoot: '',
+      publicFolder: 'public',
     },
   },
-  // See docs on content modeling for more info on how to setup new content models: https://tina.io/docs/r/content-modelling-collections/
+
   schema: {
     collections: [
       {
-        name: "post",
-        label: "Posts",
-        path: "content/posts",
-        fields: [
-          {
-            type: "string",
-            name: "title",
-            label: "Title",
-            isTitle: true,
-            required: true,
-          },
-          {
-            type: "rich-text",
-            name: "body",
-            label: "Body",
-            isBody: true,
-          },
-        ],
+        name: 'post',
+        label: 'Posts (Markdown)',
+        path: 'src/data/post',
+        format: 'md',
+        fields: postFields,
+      },
+      {
+        name: 'post_mdx',
+        label: 'Posts (MDX)',
+        path: 'src/data/post',
+        format: 'mdx',
+        fields: postFields,
       },
     ],
   },
