@@ -70,3 +70,4 @@ analytics:
 
 ui:
   theme: 'light' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
+  showAnnouncement: true # Set false to hide the purple top banner site-wide

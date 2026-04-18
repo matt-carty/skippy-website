@@ -80,6 +80,8 @@ export interface AnalyticsConfig {
 
 export interface UIConfig {
   theme: string;
+  /** When false, the top announcement strip is not rendered. */
+  showAnnouncement: boolean;
 }
 
 const DEFAULT_SITE_NAME = 'Website';
@@ -175,9 +177,10 @@ const getAppBlog = (config: Config) => {
 const getUI = (config: Config) => {
   const _default = {
     theme: 'system',
+    showAnnouncement: true,
   };
 
-  return merge({}, _default, config?.ui ?? {});
+  return merge({}, _default, config?.ui ?? {}) as UIConfig;
 };
 
 const getAnalytics = (config: Config) => {
