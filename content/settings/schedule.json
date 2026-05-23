@@ -1,0 +1,17 @@
+{
+  "preKids": {
+    "schedule": "スケジュールはLINEにてご確認ください",
+    "capacity": "6名",
+    "acceptingEnrollment": true
+  },
+  "kids": {
+    "schedule": "スケジュールはLINEにてご確認ください",
+    "capacity": "8名",
+    "acceptingEnrollment": true
+  },
+  "junior": {
+    "schedule": "スケジュールはLINEにてご確認ください",
+    "capacity": "8名",
+    "acceptingEnrollment": true
+  }
+}

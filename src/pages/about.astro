@@ -1,228 +1,221 @@
 ---
-import Features2 from '~/components/widgets/Features2.astro';
-import Features3 from '~/components/widgets/Features3.astro';
-import Hero from '~/components/widgets/Hero.astro';
-import Stats from '~/components/widgets/Stats.astro';
-import Steps2 from '~/components/widgets/Steps2.astro';
 import Layout from '~/layouts/PageLayout.astro';
+import { LINE_OA_URL } from '~/navigation';
 
 const metadata = {
-  title: 'About us',
+  title: 'メソッドについて | TPR・話す英語の理由',
+  description: 'スキッピーがTPRメソッドを採用する理由。机もなく、教科書もない。子どもが体を動かしながら自然に話す英語を習得する、その仕組みをご説明します。',
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
+  <!-- Page header -->
+  <section class="py-16 px-6 text-center" style="background: linear-gradient(135deg, #4A90E2 0%, #2d5a8e 100%);">
+    <p class="eyebrow-label mb-3" style="color: #FFD166;">ABOUT SKIPPY</p>
+    <h1 class="text-3xl md:text-5xl font-bold text-white" style="font-family: 'Noto Sans JP', sans-serif;">
+      マットティーチャーとスキッピーについて
+    </h1>
+  </section>
 
-  <Hero
-    tagline="About us"
-    image={{
-      src: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Caos Image',
-    }}
-  >
-    <Fragment slot="title">
-      Elevate your online presence with our <br />
-      <span class="text-accent dark:text-white"> Beautiful Website Templates</span>
-    </Fragment>
+  <!-- Section 1: Matthew's Introduction -->
+  <section class="py-20 px-6" style="background-color: #FDFBF7;">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <!-- Photo placeholder -->
+        <div class="order-1 md:order-1">
+          <div class="rounded-xl overflow-hidden" style="box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            <img
+              src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80"
+              alt="マットティーチャー — Skippy English School"
+              class="w-full h-80 md:h-96 object-cover"
+              loading="lazy"
+            />
+          </div>
+          <p class="text-xs text-center mt-2" style="color: #718096; font-family: 'Noto Sans JP', sans-serif;">
+            ※ 実際の写真は近日公開予定
+          </p>
+        </div>
 
-    <Fragment slot="subtitle">
-      Donec efficitur, ipsum quis congue luctus, mauris magna convallis mauris, eu auctor nisi lectus non augue. Donec
-      quis lorem non massa vulputate efficitur ac at turpis. Sed tincidunt ex a nunc convallis, et lobortis nisi tempus.
-      Suspendisse vitae nisi eget tortor luctus maximus sed non lectus.
-    </Fragment>
-  </Hero>
+        <!-- Text -->
+        <div class="order-2 md:order-2">
+          <p class="eyebrow-label mb-3">ABOUT SKIPPY</p>
+          <h2 class="text-2xl md:text-3xl font-bold mb-6" style="color: #4A90E2; font-family: 'Noto Sans JP', sans-serif;">
+            マットティーチャーです
+          </h2>
+          <div class="text-base leading-relaxed space-y-4" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif; line-height: 1.8;">
+            <p>
+              マットです。内代町でSkippy English Schoolを運営しています。
+            </p>
+            <p>
+              ここの生徒全員の名前と好きなことを知っています。毎週、子どもたちが「今日は何するの？」って笑顔で入ってくる瞬間が、この仕事の一番好きなところです。
+            </p>
+            <p>
+              私が教えているのは「英語」じゃなくて、「英語を使って遊ぶこと」。子どもたちは勉強だと思っていません。でも、体を動かしながら覚えた言葉は、ずっと残ります。
+            </p>
+            <p>
+              内代町に住んで長年。この地域の子どもたちと一緒に成長できることが、何よりの喜びです。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- Stats Widget ****************** -->
+  <!-- Section 2: Speaking vs Reading comparison -->
+  <section class="py-20 px-6" style="background-color: #EDF2F7;">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-bold text-center mb-4" style="color: #4A90E2; font-family: 'Noto Sans JP', sans-serif;">
+        普通の英会話教室とSkippy、何が違う？
+      </h2>
+      <p class="text-center text-base mb-12" style="color: #718096; font-family: 'Noto Sans JP', sans-serif;">
+        脳の学習順序が違います。
+      </p>
 
-  <Stats
-    title="Statistics about us"
-    stats={[
-      { title: 'Offices', amount: '4' },
-      { title: 'Employees', amount: '248' },
-      { title: 'Templates', amount: '12' },
-      { title: 'Awards', amount: '24' },
-    ]}
-  />
+      <!-- Comparison table — stacked cards on mobile -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+        <!-- Traditional -->
+        <div class="rounded-xl overflow-hidden">
+          <div class="py-4 px-6 text-center font-bold text-base" style="background-color: #718096; color: #ffffff; font-family: 'Noto Sans JP', sans-serif;">
+            普通の英会話教室
+          </div>
+          <div class="bg-white p-6 space-y-3">
+            {[
+              '机に座って、フラッシュカードを見る',
+              '英語を「読む」練習',
+              '受動的に聞く',
+              '教科書中心',
+              '大人数クラス',
+            ].map((item) => (
+              <div class="flex items-start gap-3 py-2 border-b border-gray-100">
+                <span class="mt-1" style="color: #718096;">✗</span>
+                <span class="text-base" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif; line-height: 1.6;">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
 
-  <!-- Features3 Widget ************** -->
+        <!-- Skippy -->
+        <div class="rounded-xl overflow-hidden">
+          <div class="py-4 px-6 text-center font-bold text-base" style="background-color: #4A90E2; color: #ffffff; font-family: 'Noto Sans JP', sans-serif;">
+            Skippy English School
+          </div>
+          <div class="p-6 space-y-3" style="background-color: rgb(255 209 102 / 20%);">
+            {[
+              '机なし。ずっと動き回る',
+              '英語を「話す」練習',
+              '体で反応する',
+              '遊び中心',
+              '少人数（6〜8名）',
+            ].map((item) => (
+              <div class="flex items-start gap-3 py-2 border-b" style="border-color: rgba(0,0,0,0.05);">
+                <span class="mt-1" style="color: #06C755;">✓</span>
+                <span class="text-base font-semibold" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif; line-height: 1.6;">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
-  <Features3
-    title="Our templates"
-    subtitle="Etiam scelerisque, enim eget vestibulum luctus, nibh mauris blandit nulla, nec vestibulum risus justo ut enim. Praesent lacinia diam et ante imperdiet euismod."
-    columns={3}
-    isBeforeContent={true}
-    items={[
-      {
-        title: 'Educational',
-        description:
-          'Morbi faucibus luctus quam, sit amet aliquet felis tempor id. Cras augue massa, ornare quis dignissim a, molestie vel nulla.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Interior Design',
-        description:
-          'Vivamus porttitor, tortor convallis aliquam pretium, turpis enim consectetur elit, vitae egestas purus erat ac nunc nulla.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Photography',
-        description:
-          'Duis sed lectus in nisl vehicula porttitor eget quis odio. Aliquam erat volutpat. Nulla eleifend nulla id sem fermentum.',
-        icon: 'tabler:template',
-      },
-    ]}
-  />
+      <!-- Explanation -->
+      <div class="text-center max-w-2xl mx-auto">
+        <p class="text-base leading-relaxed" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif; line-height: 1.8;">
+          脳の学習順序は、<strong>聞く → 話す → 読む → 書く</strong>、です。<br /><br />
+          普通の英会話教室は「読む」から始めます。スキッピーは「話す」から始めます。<br />
+          順序が違うだけで、結果が全く変わります。
+        </p>
+      </div>
+    </div>
+  </section>
 
-  <!-- Features3 Widget ************** -->
+  <!-- Section 3: TPR Method explainer -->
+  <section class="py-20 px-6" style="background-color: #FDFBF7;">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-bold mb-6" style="color: #4A90E2; font-family: 'Noto Sans JP', sans-serif;">
+        レッスンの様子
+      </h2>
 
-  <Features3
-    columns={3}
-    isAfterContent={true}
-    items={[
-      {
-        title: 'E-commerce',
-        description:
-          'Rutrum non odio at vehicula. Proin ipsum justo, dignissim in vehicula sit amet, dignissim id quam. Sed ac tincidunt sapien.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Blog',
-        description:
-          'Nullam efficitur volutpat sem sed fringilla. Suspendisse et enim eu orci volutpat laoreet ac vitae libero.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Business',
-        description:
-          'Morbi et elit finibus, facilisis justo ut, pharetra ipsum. Donec efficitur, ipsum quis congue luctus, mauris magna.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Branding',
-        description:
-          'Suspendisse vitae nisi eget tortor luctus maximus sed non lectus. Cras malesuada pretium placerat. Nullam venenatis dolor a ante rhoncus.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Medical',
-        description:
-          'Vestibulum malesuada lacus id nibh posuere feugiat. Nam volutpat nulla a felis ultrices, id suscipit mauris congue. In hac habitasse platea dictumst.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Fashion Design',
-        description:
-          'Maecenas eu tellus eget est scelerisque lacinia et a diam. Aliquam velit lorem, vehicula id fermentum et, rhoncus et purus.',
-        icon: 'tabler:template',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-      alt: 'Colorful Image',
-    }}
-  />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+        <!-- Text -->
+        <div>
+          <div class="text-base leading-relaxed space-y-4 mb-8" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif; line-height: 1.8;">
+            <p>
+              「Jump!」と言いながら跳ぶ。「Stand up!」と言いながら立つ。
+            </p>
+            <p>
+              体で覚えた言葉は、忘れません。
+            </p>
+            <p>
+              これが、TPR（Total Physical Response）メソッドです。子どもの脳は、体の動きと言葉をセットで記憶します。だから、教科書を使わなくても、自然に英語が身につきます。
+            </p>
+            <p>
+              レッスン中、子どもたちはずっと動いています。座っている時間は、ほとんどありません。最初は恥ずかしがっていた子も、2〜3回目には一緒に跳んで、笑って、英語を使っています。
+            </p>
+          </div>
 
-  <!-- Steps2 Widget ****************** -->
+          <!-- Age groups -->
+          <h3 class="text-lg font-bold mb-4" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif;">年齢別クラス</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <span class="text-xl">✨</span>
+              <div>
+                <span class="font-bold" style="color: #4A90E2; font-family: 'Noto Sans JP', sans-serif;">プレKids（2〜3歳）</span>
+                <span style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif;"> — 保護者同伴。遊びながら英語の音に慣れる</span>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-xl">✨</span>
+              <div>
+                <span class="font-bold" style="color: #4A90E2; font-family: 'Noto Sans JP', sans-serif;">Kidsクラス（4〜5歳）</span>
+                <span style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif;"> — 体を動かしながら話す英語を習得</span>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-xl">✨</span>
+              <div>
+                <span class="font-bold" style="color: #4A90E2; font-family: 'Noto Sans JP', sans-serif;">Juniorクラス（6〜8歳）</span>
+                <span style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif;"> — 会話の幅を広げ、読み書きへ移行準備</span>
+              </div>
+            </li>
+          </ul>
+        </div>
 
-  <Steps2
-    title="Our values"
-    subtitle="Maecenas eu tellus eget est scelerisque lacinia et a diam. Aliquam velit lorem, vehicula id fermentum et, rhoncus et purus. Nulla facilisi. Vestibulum malesuada lacus."
-    items={[
-      {
-        title: 'Customer-centric approach',
-        description:
-          'Donec id nibh neque. Quisque et fermentum tortor. Fusce vitae dolor a mauris dignissim commodo. Ut eleifend luctus condimentum.',
-      },
-      {
-        title: 'Constant Improvement',
-        description:
-          'Phasellus laoreet fermentum venenatis. Vivamus dapibus pulvinar arcu eget mattis. Fusce eget mauris leo.',
-      },
-      {
-        title: 'Ethical Practices',
-        description:
-          'Vestibulum imperdiet libero et lectus molestie, et maximus augue porta. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
-      },
-    ]}
-  />
+        <!-- Video/image placeholder -->
+        <div>
+          <div class="rounded-xl overflow-hidden mb-3" style="box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            <img
+              src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=800&q=80"
+              alt="TPRレッスンの様子 — 体を動かしながら英語を学ぶ子どもたち"
+              class="w-full h-64 object-cover"
+              loading="lazy"
+            />
+          </div>
+          <p class="text-xs text-center" style="color: #718096; font-family: 'Noto Sans JP', sans-serif;">
+            ※ 実際のレッスン動画は近日公開予定
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- Steps2 Widget ****************** -->
+  <!-- Section 4: CTA -->
+  <section class="py-20 px-6 text-center" style="background-color: #EDF2F7;">
+    <div class="max-w-2xl mx-auto">
+      <p class="text-xl font-bold mb-6 leading-relaxed" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif; line-height: 1.7;">
+        「まず一回、見に来てください。<br />
+        無料体験レッスンで、お子さんの顔を見てほしいです。」
+      </p>
+      <p class="text-base mb-8" style="color: #718096; font-family: 'Noto Sans JP', sans-serif;">
+        — マットティーチャー
+      </p>
 
-  <Steps2
-    title="Achievements"
-    subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla, sed porttitor est nibh at nulla."
-    isReversed={true}
-    callToAction={{
-      text: 'See more',
-      href: '/',
-    }}
-    items={[
-      {
-        title: 'Global reach',
-        description: 'Nam malesuada urna in enim imperdiet tincidunt. Phasellus non tincidunt nisi, at elementum mi.',
-        icon: 'tabler:globe',
-      },
-      {
-        title: 'Positive customer feedback and reviews',
-        description:
-          'Cras semper nulla leo, eget laoreet erat cursus sed. Praesent faucibus massa in purus iaculis dictum.',
-        icon: 'tabler:message-star',
-      },
-      {
-        title: 'Awards and recognition as industry experts',
-        description:
-          'Phasellus lacinia cursus velit, eu malesuada magna pretium eu. Etiam aliquet tellus purus, blandit lobortis ex rhoncus vitae.',
-        icon: 'tabler:award',
-      },
-    ]}
-  />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Our locations"
-    tagline="Find us"
-    columns={4}
-    items={[
-      {
-        title: 'EE.UU',
-        description: '1234 Lorem Ipsum St, 12345, Miami',
-      },
-      {
-        title: 'Spain',
-        description: '5678 Lorem Ipsum St, 56789, Madrid',
-      },
-      {
-        title: 'Australia',
-        description: '9012 Lorem Ipsum St, 90123, Sydney',
-      },
-      {
-        title: 'Brazil',
-        description: '3456 Lorem Ipsum St, 34567, São Paulo',
-      },
-    ]}
-  />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Technical Support"
-    tagline="Contact us"
-    columns={2}
-    items={[
-      {
-        title: 'Chat with us',
-        description:
-          'Integer luctus laoreet libero, auctor varius purus rutrum sit amet. Ut nec molestie nisi, quis eleifend mi.',
-        icon: 'tabler:messages',
-      },
-      {
-        title: 'Call us',
-        description:
-          'Mauris faucibus finibus orci, in posuere elit viverra non. In hac habitasse platea dictumst. Cras lobortis metus a hendrerit congue.',
-        icon: 'tabler:headset',
-      },
-    ]}
-  />
+      <a href={LINE_OA_URL} target="_blank" rel="noopener noreferrer"
+        class="btn-line text-lg font-semibold"
+        style="max-width: 400px; margin: 0 auto;">
+        <svg width="24" height="24" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M38 20.3C38 13.1 31 7.3 22.4 7.3C13.8 7.3 6.8 13.1 6.8 20.3C6.8 26.7 12.2 32.1 19.7 33.1C20.2 33.2 20.9 33.4 21.1 33.8C21.3 34.2 21.2 34.8 21.1 35.2L20.7 37.4C20.6 37.8 20.3 39 22.4 38.1C24.5 37.2 33.2 31.8 37.1 27.3C38.9 25.3 38 22.5 38 20.3Z" fill="white"/>
+        </svg>
+        LINEで体験レッスンを予約する
+      </a>
+    </div>
+  </section>
 </Layout>

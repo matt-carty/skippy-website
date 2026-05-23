@@ -1,0 +1,135 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { LINE_OA_URL } from '~/navigation';
+
+const metadata = {
+  title: 'クラス・スケジュール | 2〜8歳',
+  description: 'Skippy English Schoolのクラス紹介。プレKids（2〜3歳）、Kidsクラス（4〜5歳）、Juniorクラス（6〜8歳）。スケジュール確認と無料体験レッスン予約はこちら。',
+};
+
+const classes = [
+  {
+    id: 'pre-kids',
+    emoji: '👶',
+    name: 'プレKids',
+    age: '2〜3歳',
+    parentRequired: true,
+    capacity: '6名',
+    schedule: 'スケジュールは近日公開予定',
+    description: '初めて英語に触れるお子さんのためのクラス。保護者の方と一緒に参加していただきます。動きと歌を中心に、英語の音とリズムに慣れていきます。まずは「楽しい！」と感じてもらうことが目標です。',
+    icon: '🎵',
+  },
+  {
+    id: 'kids',
+    emoji: '🧒',
+    name: 'Kidsクラス',
+    age: '4〜5歳',
+    parentRequired: false,
+    capacity: '8名',
+    schedule: 'スケジュールは近日公開予定',
+    description: '体を動かしながら話す英語を習得するメインクラス。TPRメソッドで「Jump!」「Sit down!」「Touch the door!」など、体の動きと英語をセットで覚えます。4〜8週間で英語を自然に使い始めるお子さんがほとんどです。',
+    icon: '🏃',
+  },
+  {
+    id: 'junior',
+    emoji: '👦',
+    name: 'Juniorクラス',
+    age: '6〜8歳',
+    parentRequired: false,
+    capacity: '8名',
+    schedule: 'スケジュールは近日公開予定',
+    description: '会話の幅をさらに広げ、読み書きへの移行準備をするクラス。英語での簡単な会話、ストーリーテリング、フォニックスの基礎を楽しく学びます。英語が「外国語」から「道具」に変わっていく段階です。',
+    icon: '📚',
+  },
+];
+---
+
+<Layout metadata={metadata}>
+  <!-- Header -->
+  <section class="py-16 px-6 text-center" style="background: linear-gradient(135deg, #4A90E2 0%, #2d5a8e 100%);">
+    <p class="eyebrow-label mb-3" style="color: #FFD166;">CLASSES & SCHEDULE</p>
+    <h1 class="text-3xl md:text-5xl font-bold text-white" style="font-family: 'Noto Sans JP', sans-serif;">
+      クラス・スケジュール
+    </h1>
+    <p class="mt-4 text-base text-white opacity-90" style="font-family: 'Noto Sans JP', sans-serif;">
+      2歳から8歳まで — お子さんの年齢に合わせた3つのクラス
+    </p>
+  </section>
+
+  <!-- Classes grid -->
+  <section class="py-20 px-6" style="background-color: #FDFBF7;">
+    <div class="max-w-5xl mx-auto space-y-10">
+      {classes.map((cls) => (
+        <div id={cls.id} class="rounded-2xl overflow-hidden" style="box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+          <!-- Class header -->
+          <div class="py-6 px-8" style="background-color: #4A90E2;">
+            <div class="flex items-center gap-4">
+              <span class="text-4xl">{cls.emoji}</span>
+              <div>
+                <h2 class="text-2xl font-bold text-white" style="font-family: 'Noto Sans JP', sans-serif;">{cls.name}</h2>
+                <p class="text-base opacity-90 text-white" style="font-family: 'Noto Sans JP', sans-serif;">{cls.age} · 定員{cls.capacity}{cls.parentRequired ? ' · 保護者同伴' : ''}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Class body -->
+          <div class="bg-white p-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <h3 class="text-base font-bold mb-3" style="color: #4A90E2; font-family: 'Noto Sans JP', sans-serif;">クラスについて</h3>
+                <p class="text-base leading-relaxed" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif; line-height: 1.8;">
+                  {cls.description}
+                </p>
+              </div>
+              <div>
+                <h3 class="text-base font-bold mb-3" style="color: #4A90E2; font-family: 'Noto Sans JP', sans-serif;">レッスン日時</h3>
+                <div class="rounded-lg p-4 mb-4" style="background-color: #EDF2F7;">
+                  <p class="text-base" style="color: #718096; font-family: 'Noto Sans JP', sans-serif;">{cls.schedule}</p>
+                </div>
+                <div class="flex items-center gap-2 text-sm" style="color: #718096; font-family: 'Noto Sans JP', sans-serif;">
+                  <span>📍</span>
+                  <span>宮城野区内代町</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Schedule note + flexible CTA -->
+  <section class="py-16 px-6" style="background-color: #EDF2F7;">
+    <div class="max-w-2xl mx-auto text-center">
+      <div class="rounded-xl p-8 mb-8" style="background: #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+        <h3 class="text-lg font-bold mb-4" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif;">
+          スケジュールが合わない場合は
+        </h3>
+        <p class="text-base mb-6" style="color: #718096; font-family: 'Noto Sans JP', sans-serif; line-height: 1.8;">
+          ご希望の日程をLINEでお知らせください。<br />
+          できる限り柔軟に対応いたします。
+        </p>
+        <a href={LINE_OA_URL} target="_blank" rel="noopener noreferrer"
+          class="btn-line"
+          style="max-width: 360px; margin: 0 auto;">
+          <svg width="20" height="20" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M38 20.3C38 13.1 31 7.3 22.4 7.3C13.8 7.3 6.8 13.1 6.8 20.3C6.8 26.7 12.2 32.1 19.7 33.1C20.2 33.2 20.9 33.4 21.1 33.8C21.3 34.2 21.2 34.8 21.1 35.2L20.7 37.4C20.6 37.8 20.3 39 22.4 38.1C24.5 37.2 33.2 31.8 37.1 27.3C38.9 25.3 38 22.5 38 20.3Z" fill="white"/>
+          </svg>
+          スケジュールをLINEで相談する
+        </a>
+      </div>
+
+      <h3 class="text-lg font-bold mb-4" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif;">
+        まずは無料体験レッスンから
+      </h3>
+      <p class="text-base mb-6" style="color: #718096; font-family: 'Noto Sans JP', sans-serif; line-height: 1.8;">
+        入会のプレッシャーは一切ありません。<br />
+        お子さんが楽しめるかどうか、一緒に確かめましょう。
+      </p>
+      <a href="/trial" class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold text-base transition"
+        style="background: #4A90E2; color: #ffffff; font-family: 'Noto Sans JP', sans-serif; min-height: 56px; width: 100%; max-width: 360px;">
+        無料体験レッスンについて →
+      </a>
+    </div>
+  </section>
+</Layout>

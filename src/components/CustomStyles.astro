@@ -1,80 +1,212 @@
 ---
 import '@fontsource-variable/inter';
-
-// 'DM Sans'
-// Nunito
-// Dosis
-// Outfit
-// Roboto
-// Literata
-// 'IBM Plex Sans'
-// Karla
-// Poppins
-// 'Fira Sans'
-// 'Libre Franklin'
-// Inconsolata
-// Raleway
-// Oswald
-// 'Space Grotesk'
-// Urbanist
 ---
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap"
+  rel="stylesheet"
+/>
 
 <style is:inline>
   /*
-   * Skippy English School — official brand palette
-   * Pink #FF00A3 · Light blue #6AE6EE · Purple #9966FF · Dark text #302D55
-   * Orange #FF9933 · Standard text #7A7A7A
+   * Skippy English School — brand palette
+   * Warm Blue #4A90E2 · Soft Yellow #FFD166 · LINE Green #06C755
+   * Movement Orange #FF8A5B · Charcoal #2D3748 · Warm White #FDFBF7
    */
   :root {
-    --aw-font-sans: 'Inter Variable';
-    --aw-font-serif: 'Inter Variable';
-    --aw-font-heading: 'Inter Variable';
+    --aw-font-sans: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+    --aw-font-serif: 'Noto Sans JP', serif;
+    --aw-font-heading: 'Poppins', 'Noto Sans JP', sans-serif;
 
-    --aw-color-primary: rgb(153 102 255);
-    /* Darker purple for primary hover / secondary actions */
-    --aw-color-secondary: rgb(120 62 230);
-    --aw-color-accent: rgb(255 0 163);
+    /* Primary brand: Skippy Warm Blue */
+    --aw-color-primary: rgb(74 144 226);
+    /* Slightly deeper blue for hover */
+    --aw-color-secondary: rgb(52 110 185);
+    /* Movement Orange as accent */
+    --aw-color-accent: rgb(255 138 91);
 
-    --aw-color-brand-cyan: rgb(106 230 238);
-    --aw-color-brand-orange: rgb(255 153 51);
+    --aw-color-text-heading: rgb(45 55 72);
+    --aw-color-text-default: rgb(45 55 72);
+    --aw-color-text-muted: rgb(113 128 150);
+    --aw-color-text-page: rgb(45 55 72);
+    --aw-color-bg-page: rgb(253 251 247);
+    --aw-color-surface-soft: rgb(237 242 247);
 
-    --aw-color-text-heading: rgb(48 45 85);
-    --aw-color-text-default: rgb(122 122 122);
-    --aw-color-text-muted: rgb(122 122 122 / 72%);
-    --aw-color-text-page: rgb(122 122 122);
-    --aw-color-bg-page: rgb(252 253 254);
-    /* Wash using light blue */
-    --aw-color-surface-soft: rgb(239 251 252);
+    --aw-color-bg-page-dark: rgb(26 32 44);
 
-    --aw-color-bg-page-dark: rgb(26 24 44);
+    /* Skippy custom tokens */
+    --skippy-blue: #4A90E2;
+    --skippy-yellow: #FFD166;
+    --skippy-line-green: #06C755;
+    --skippy-orange: #FF8A5B;
+    --skippy-charcoal: #2D3748;
+    --skippy-warm-white: #FDFBF7;
+    --skippy-soft-grey: #718096;
+    --skippy-light-grey: #EDF2F7;
 
     ::selection {
-      background-color: rgb(153 102 255 / 22%);
+      background-color: rgb(74 144 226 / 22%);
     }
   }
 
-  .dark {
-    --aw-font-sans: 'Inter Variable';
-    --aw-font-serif: 'Inter Variable';
-    --aw-font-heading: 'Inter Variable';
+  /* Force light-only — no dark mode for this brand */
+  html {
+    color-scheme: light;
+  }
 
-    --aw-color-primary: rgb(179 153 255);
-    --aw-color-secondary: rgb(153 102 255);
-    --aw-color-accent: rgb(255 77 176);
+  body {
+    font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+    background-color: var(--skippy-warm-white);
+  }
 
-    --aw-color-brand-cyan: rgb(140 235 242);
-    --aw-color-brand-orange: rgb(255 179 102);
+  /* LINE CTA button styles */
+  .btn-line {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: var(--skippy-line-green);
+    color: #ffffff;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.2;
+    padding: 16px 24px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.15s ease, transform 0.1s ease;
+    min-height: 56px;
+    width: 100%;
+  }
 
-    --aw-color-text-heading: rgb(247 248 248);
-    --aw-color-text-default: rgb(212 212 220);
-    --aw-color-text-muted: rgb(212 212 220 / 66%);
-    --aw-color-text-page: rgb(212 212 220);
-    --aw-color-bg-page: rgb(26 24 44);
-    --aw-color-surface-soft: rgb(36 34 58);
+  .btn-line:hover {
+    background-color: #05b04d;
+    transform: translateY(-1px);
+  }
 
-    ::selection {
-      background-color: rgb(153 102 255 / 40%);
-      color: rgb(255 255 255);
+  .btn-line:active {
+    transform: translateY(0);
+  }
+
+  /* Fixed LINE bottom bar — mobile only */
+  .line-bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 56px;
+    background-color: var(--skippy-line-green);
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (min-width: 768px) {
+    .line-bottom-bar {
+      display: none;
     }
+  }
+
+  .line-bottom-bar a {
+    color: #ffffff;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    padding: 0 16px;
+  }
+
+  /* Give page content bottom padding so it clears the fixed bar */
+  @media (max-width: 767px) {
+    body {
+      padding-bottom: 56px;
+    }
+  }
+
+  /* Skippy heading styles */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: var(--skippy-charcoal);
+  }
+
+  /* Section eyebrow labels use Poppins */
+  .eyebrow-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--skippy-orange);
+  }
+
+  /* Skippy section backgrounds */
+  .bg-skippy-blue { background-color: var(--skippy-blue); }
+  .bg-skippy-yellow { background-color: var(--skippy-yellow); }
+  .bg-skippy-yellow-soft { background-color: rgb(255 209 102 / 20%); }
+  .bg-skippy-warm-white { background-color: var(--skippy-warm-white); }
+  .bg-skippy-light-grey { background-color: var(--skippy-light-grey); }
+
+  .text-skippy-blue { color: var(--skippy-blue); }
+  .text-skippy-orange { color: var(--skippy-orange); }
+  .text-skippy-charcoal { color: var(--skippy-charcoal); }
+  .text-skippy-muted { color: var(--skippy-soft-grey); }
+
+  /* Comparison table styles */
+  .comparison-table th, .comparison-table td {
+    padding: 12px 16px;
+    font-size: 15px;
+    line-height: 1.6;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .comparison-table th {
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  /* FAQ accordion */
+  .faq-item details summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 16px 0;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--skippy-charcoal);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .faq-item details summary::after {
+    content: '+';
+    font-size: 20px;
+    color: var(--skippy-blue);
+    flex-shrink: 0;
+    margin-left: 12px;
+  }
+
+  .faq-item details[open] summary::after {
+    content: '−';
+  }
+
+  .faq-item details p {
+    padding: 16px 0;
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--skippy-charcoal);
   }
 </style>

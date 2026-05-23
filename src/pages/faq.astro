@@ -1,0 +1,170 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { LINE_OA_URL } from '~/navigation';
+
+const metadata = {
+  title: 'よくある質問',
+  description: 'よくある質問。何歳から参加できる？うちの子シャイでも大丈夫？月謝は？Skippy English Schoolへの疑問にお答えします。',
+};
+
+const faqGroups = [
+  {
+    title: 'メソッドについて',
+    icon: '🎓',
+    faqs: [
+      {
+        q: '机に座らないって本当ですか？',
+        a: 'はい、本当です。スキッピーのレッスンは机を使いません。子どもたちは動き回り、ジャンプしたり、ポイントしたり、体全体を使って英語を学びます。体を動かすことで、言葉の記憶が深く定着します。',
+      },
+      {
+        q: 'TPRメソッドとは何ですか？',
+        a: 'TPR（Total Physical Response）は、体の動きと言語を結びつけて習得する教育メソッドです。「Jump!」と聞いて跳ぶ、「Sit down!」と聞いて座る。脳は体の動きと言葉をセットで記憶するため、忘れにくく、自然に使えるようになります。',
+      },
+      {
+        q: '英語をまったく話せない子でも大丈夫ですか？',
+        a: 'まったく問題ありません。むしろ、英語ゼロから始める子の方が、先入観なく自然に習得できることが多いです。スキッピーのレッスンは英語力ゼロを前提に設計されています。',
+      },
+    ],
+  },
+  {
+    title: 'スクールについて',
+    icon: '🏫',
+    faqs: [
+      {
+        q: '何歳から通えますか？',
+        a: '2歳から参加できます。2〜3歳のプレKidsクラスは保護者同伴。4〜5歳のKidsクラス、6〜8歳のJuniorクラスと年齢に合わせたプログラムを用意しています。',
+      },
+      {
+        q: 'クラスの人数は？',
+        a: 'プレKidsは最大6名、KidsクラスとJuniorクラスは最大8名です。少人数制なので、マットティーチャーが全員の名前と好きなことを把握しています。',
+      },
+      {
+        q: '先生は何人いますか？',
+        a: 'マットティーチャー1人が全クラスを担当しています。少人数クラスなので、1人の先生が全員に目を届かせることができます。',
+      },
+    ],
+  },
+  {
+    title: '体験・入会について',
+    icon: '📝',
+    faqs: [
+      {
+        q: '体験レッスンは本当に無料ですか？',
+        a: 'はい、完全無料です。体験レッスン費用、入会金、手数料は一切かかりません。',
+      },
+      {
+        q: '体験レッスンの後、すぐに入会しなければいけませんか？',
+        a: 'いいえ。当日、入会を勧めることはしません。お子さんが楽しかったと感じたら、その後ゆっくりご検討ください。',
+      },
+      {
+        q: '月謝はいくらですか？',
+        a: '月謝についてはLINEまたはメールでお問い合わせください。体験レッスン時に詳しくご説明いたします。',
+      },
+    ],
+  },
+  {
+    title: 'アクセス・実際のレッスンについて',
+    icon: '📍',
+    faqs: [
+      {
+        q: 'どこにありますか？',
+        a: '大阪市宮城野区内代町にあります。鶴橋駅、森ノ宮駅、京橋駅から自転車圏内です。詳しいアクセス方法はアクセスページをご覧ください。',
+      },
+      {
+        q: '駐車場はありますか？',
+        a: '専用駐車場はありません。お近くのコインパーキングをご利用ください。自転車での来校をお勧めしています。',
+      },
+      {
+        q: '振替レッスンはありますか？',
+        a: '振替についてはLINEでご相談ください。できる限り柔軟に対応いたします。',
+      },
+    ],
+  },
+];
+---
+
+<Layout metadata={metadata}>
+  <!-- Header -->
+  <section class="py-16 px-6 text-center" style="background: linear-gradient(135deg, #4A90E2 0%, #2d5a8e 100%);">
+    <p class="eyebrow-label mb-3" style="color: #FFD166;">FAQ</p>
+    <h1 class="text-3xl md:text-5xl font-bold text-white" style="font-family: 'Noto Sans JP', sans-serif;">
+      よくある質問
+    </h1>
+  </section>
+
+  <!-- FAQ content -->
+  <section class="py-20 px-6" style="background-color: #FDFBF7;">
+    <div class="max-w-3xl mx-auto space-y-16">
+      {faqGroups.map((group) => (
+        <div>
+          <div class="flex items-center gap-3 mb-8">
+            <span class="text-3xl">{group.icon}</span>
+            <h2 class="text-xl md:text-2xl font-bold" style="color: #4A90E2; font-family: 'Noto Sans JP', sans-serif;">
+              {group.title}
+            </h2>
+          </div>
+
+          <div class="space-y-0 faq-item">
+            {group.faqs.map(({ q, a }) => (
+              <details class="border-t border-gray-200">
+                <summary class="py-5 pr-8 cursor-pointer font-bold text-base relative" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif; list-style: none; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;">
+                  <span>{q}</span>
+                  <span class="flex-shrink-0 text-xl mt-0.5" style="color: #4A90E2;">＋</span>
+                </summary>
+                <div class="pb-5">
+                  <p class="text-base leading-relaxed" style="color: #718096; font-family: 'Noto Sans JP', sans-serif; line-height: 1.8;">
+                    {a}
+                  </p>
+                </div>
+              </details>
+            ))}
+          </div>
+
+          <!-- Line nudge at end of each group -->
+          <div class="mt-6 pt-6 border-t border-gray-200">
+            <p class="text-sm" style="color: #718096; font-family: 'Noto Sans JP', sans-serif;">
+              もっと知りたいことがあれば →
+              <a href={LINE_OA_URL} target="_blank" rel="noopener noreferrer"
+                class="font-semibold ml-1" style="color: #06C755;">
+                LINEでお気軽に質問する
+              </a>
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="py-16 px-6 text-center" style="background-color: #EDF2F7;">
+    <div class="max-w-2xl mx-auto">
+      <h3 class="text-xl font-bold mb-4" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif;">
+        他にご質問はありますか？
+      </h3>
+      <p class="text-base mb-8" style="color: #718096; font-family: 'Noto Sans JP', sans-serif; line-height: 1.8;">
+        LINEでお気軽にお問い合わせください。<br />
+        もちろん、無料体験レッスンのご予約もLINEから。
+      </p>
+      <a href={LINE_OA_URL} target="_blank" rel="noopener noreferrer"
+        class="btn-line"
+        style="max-width: 400px; margin: 0 auto;">
+        <svg width="24" height="24" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M38 20.3C38 13.1 31 7.3 22.4 7.3C13.8 7.3 6.8 13.1 6.8 20.3C6.8 26.7 12.2 32.1 19.7 33.1C20.2 33.2 20.9 33.4 21.1 33.8C21.3 34.2 21.2 34.8 21.1 35.2L20.7 37.4C20.6 37.8 20.3 39 22.4 38.1C24.5 37.2 33.2 31.8 37.1 27.3C38.9 25.3 38 22.5 38 20.3Z" fill="white"/>
+        </svg>
+        LINEで質問する・予約する
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // Replace '+' with '−' on open for native details element
+  document.querySelectorAll('details').forEach((el) => {
+    el.addEventListener('toggle', () => {
+      const indicator = el.querySelector('summary span:last-child');
+      if (indicator) {
+        indicator.textContent = el.open ? '－' : '＋';
+      }
+    });
+  });
+</script>
