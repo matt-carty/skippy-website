@@ -35,6 +35,7 @@
 - [Demo](#demo)
 - [Upcoming: AstroWind 2.0 – We Need Your Vision!](#-upcoming-astrowind-20--we-need-your-vision)
 - [TL;DR](#tldr)
+  - [Skippy English · Vercel builds](#skippy-english-vercel-builds)
 - [Getting started](#getting-started)
   - [Project structure](#project-structure)
   - [Commands](#commands)
@@ -69,6 +70,11 @@ We're embarking on an exciting journey with **AstroWind 2.0**, and we want you t
 ```shell
 pnpm create astro@latest -- --template arthelokyo/astrowind
 ```
+
+### Skippy English · Vercel builds
+
+Deployments use **`npm ci`** (`vercel.json`); the authoritative lockfile is **`package-lock.json`** (pnpm lock is not committed). Avoid switching the Vercel install step back to pnpm—see **`VERCEL.md`** and **[Deploy → Vercel](#deploy)** for the full note.
+
 
 ## Getting started
 
@@ -272,6 +278,8 @@ Clone this repository on your own GitHub account and deploy it to Netlify:
 Clone this repository on your own GitHub account and deploy to Vercel:
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Farthelokyo%2Fastrowind)
+
+> **Note (this fork / Skippy):** Vercel **must install with npm**, not pnpm. This repo commits **`package-lock.json`**; **`pnpm-lock.yaml` is not in Git.** A vendor previously set **`pnpm install`** in `vercel.json` without a tracked pnpm lockfile, which broke Vercel builds (pnpm **`ERR_INVALID_THIS`** / registry fetch failures). **`vercel.json`** now uses **`npm ci`**. The same explanation lives in **`VERCEL.md`** at the repo root.
 
 <br>
 

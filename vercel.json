@@ -2,7 +2,7 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "buildCommand": "astro build",
-  "installCommand": "pnpm install --frozen-lockfile=false",
+  "installCommand": "npm ci",
   "headers": [
     {
       "source": "/_astro/(.*)",
