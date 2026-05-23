@@ -8,9 +8,9 @@ site:
 
 metadata:
   title:
-    default: 'Skippy English School | 英会話教室 内代町・宮城野区'
+    default: 'Skippy English School | 英会話教室 内代町・都島区'
     template: '%s | Skippy English School'
-  description: '大阪・宮城野区内代町のこども英会話教室。2〜8歳対象。マットティーチャーによる少人数TPRレッスン。話すことから始める英語教育。無料体験レッスン受付中。'
+  description: '大阪・都島区内代町のこども英会話教室。2〜8歳対象。マットティーチャーによる少人数TPRレッスン。話すことから始める英語教育。無料体験レッスン受付中。'
   robots:
     index: true
     follow: true

@@ -3,8 +3,8 @@ import Layout from '~/layouts/PageLayout.astro';
 import { LINE_OA_URL } from '~/navigation';
 
 const metadata = {
-  title: 'アクセス・お問い合わせ | 内代町（宮城野区）',
-  description: 'Skippy English School（宮城野区内代町）へのアクセス。鶴橋・森ノ宮・京橋から自転車圏内。Googleマップ掲載。',
+  title: 'アクセス・お問い合わせ | 内代町（都島区）',
+  description: 'Skippy English School（都島区内代町）へのアクセス。鶴橋・森ノ宮・京橋から自転車圏内。Googleマップ掲載。',
 };
 ---
 
@@ -35,9 +35,9 @@ const metadata = {
             <div>
               <p class="font-bold mb-1" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif;">住所</p>
               <p class="text-base" style="color: #718096; font-family: 'Noto Sans JP', sans-serif; line-height: 1.7;">
-                〒536-0014<br />
-                大阪府大阪市城東区鴫野西4丁目<br />
-                内代町（番地はLINEでご確認ください）
+                〒534-0013<br />
+                大阪府大阪市都島区<br />
+                内代町2-2-23
               </p>
             </div>
           </div>
@@ -97,10 +97,16 @@ const metadata = {
               LINEでお問い合わせ・ご予約
             </a>
 
+            <a href="tel:0661679262"
+              class="flex items-center justify-center gap-3 py-4 px-6 rounded-lg border-2 font-semibold text-base transition"
+              style="border-color: #4A90E2; color: #4A90E2; font-family: 'Noto Sans JP', sans-serif; min-height: 56px;">
+              📞 06 6167 9262
+            </a>
+
             <a href="mailto:info@skippy-english.jp"
               class="flex items-center justify-center gap-3 py-4 px-6 rounded-lg border-2 font-semibold text-base transition"
               style="border-color: #4A90E2; color: #4A90E2; font-family: 'Noto Sans JP', sans-serif; min-height: 56px;">
-              ✉️ メールで問い合わせる
+              ✉️ info@skippy-english.jp
             </a>
           </div>
         </div>
@@ -122,12 +128,12 @@ const metadata = {
             allowfullscreen={true}
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
-            title="Skippy English School — 宮城野区内代町の地図"
+            title="Skippy English School — 都島区内代町2-2-23の地図"
           ></iframe>
         </div>
 
         <p class="mt-3 text-sm text-center" style="color: #718096; font-family: 'Noto Sans JP', sans-serif;">
-          ※ 正確な住所はLINEでご確認ください
+          〒534-0013 大阪府大阪市都島区内代町2-2-23
         </p>
 
         <!-- Nearby landmarks -->
@@ -159,7 +165,7 @@ const metadata = {
       <p class="text-base mb-6" style="color: #718096; font-family: 'Noto Sans JP', sans-serif; line-height: 1.8;">
         フォローして、スキッピーの日常をチェックしてください。
       </p>
-      <a href="https://www.instagram.com/skippy_english_school/" target="_blank" rel="noopener noreferrer"
+      <a href="https://www.instagram.com/skippyenglishschool/" target="_blank" rel="noopener noreferrer"
         class="inline-flex items-center justify-center gap-3 py-4 px-8 rounded-lg font-semibold text-base transition mb-8"
         style="background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #ffffff; font-family: 'Noto Sans JP', sans-serif; min-height: 56px;">
         📸 Instagramをフォロー
@@ -174,13 +180,16 @@ const metadata = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "Skippy English School",
-  "description": "大阪市宮城野区内代町のこども英会話教室。2〜8歳対象のTPRメソッドによる少人数レッスン。",
+  "description": "大阪市都島区内代町のこども英会話教室。2〜8歳対象のTPRメソッドによる少人数レッスン。",
   "url": "https://skippy-english-school.vercel.app",
+  "telephone": "06-6167-9262",
+  "email": "info@skippy-english.jp",
   "address": {
     "@type": "PostalAddress",
-    "addressLocality": "大阪市",
+    "streetAddress": "内代町2-2-23",
+    "addressLocality": "大阪市都島区",
     "addressRegion": "大阪府",
-    "postalCode": "536-0014",
+    "postalCode": "534-0013",
     "addressCountry": "JP"
   },
   "geo": {
@@ -188,9 +197,9 @@ const metadata = {
     "latitude": 34.6771,
     "longitude": 135.5301
   },
-  "areaServed": ["宮城野区", "城東区", "鶴見区", "生野区"],
+  "areaServed": ["都島区", "城東区", "鶴見区", "生野区"],
   "sameAs": [
-    "https://www.instagram.com/skippy_english_school/"
+    "https://www.instagram.com/skippyenglishschool/"
   ]
 }
 </script>

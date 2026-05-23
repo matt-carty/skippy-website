@@ -1,6 +1,6 @@
 import { getPermalink } from './utils/permalinks';
 
-const LINE_OA_URL = 'https://line.me/R/ti/p/@skippy-english';
+const LINE_OA_URL = 'https://lin.ee/EB9EgWJ';
 
 export const headerData = {
   links: [
@@ -48,12 +48,12 @@ export const footerData = {
     { text: 'プライバシーポリシー', href: getPermalink('/privacy') },
   ],
   socialLinks: [
-    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: 'https://www.instagram.com/skippy_english_school/' },
+    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: 'https://www.instagram.com/skippyenglishschool/' },
     { ariaLabel: 'LINE', icon: 'tabler:brand-line', href: LINE_OA_URL },
   ],
   footNote: `
     <span class="font-semibold">Skippy English School</span><br />
-    〒536-0014 大阪府大阪市城東区鴫野西4丁目 内代町<br />
+    〒534-0013 大阪府大阪市都島区内代町2-2-23<br />
     © ${new Date().getFullYear()} Skippy English School. All rights reserved.
   `,
 };
