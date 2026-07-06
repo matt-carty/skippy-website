@@ -1,0 +1,82 @@
+---
+import { Icon } from 'astro-icon/components';
+import { getPermalink, getHomePermalink } from '~/utils/permalinks';
+import { headerData, LINE_OA_URL } from '~/navigation';
+
+// Footer nav mirrors the header menu exactly (same titles, same order),
+// so the two can never drift apart again.
+const navLinks = [{ text: 'ホーム', href: getHomePermalink() }, ...headerData.links];
+
+const year = new Date().getFullYear();
+const INSTAGRAM_URL = 'https://www.instagram.com/skippyenglishschool/';
+---
+
+<footer class="section-navy" style="color: #ffffff;">
+  <div class="max-w-5xl mx-auto px-6 pt-14 pb-8">
+    <!-- Brand + tagline -->
+    <div class="text-center mb-10">
+      <p class="font-heading font-extrabold text-2xl mb-2" style="color: #ffffff;">
+        Skippy<span style="color: var(--skippy-cyan);"> English School</span>
+      </p>
+      <p class="text-sm font-bold" style="color: rgb(255 255 255 / 70%);">まず話す、それから読む。</p>
+    </div>
+
+    <!-- Nav: same titles as the menu, wrap-safe grid on mobile -->
+    <nav aria-label="フッターナビゲーション" class="mb-10">
+      <ul class="grid grid-cols-2 md:flex md:flex-wrap md:justify-center gap-x-6 gap-y-3 text-center">
+        {navLinks.map((l) => (
+          <li>
+            <a href={l.href} class="text-sm font-bold hover:underline" style="color: rgb(255 255 255 / 88%);">{l.text}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <!-- CTAs -->
+    <div class="flex flex-col sm:flex-row gap-3 justify-center items-center mb-10">
+      <a href={LINE_OA_URL} target="_blank" rel="noopener noreferrer" class="btn-line" style="min-width: 260px;">
+        <Icon name="tabler:brand-line" class="w-6 h-6" />
+        LINEで無料体験を予約
+      </a>
+      <a href={getPermalink('/trial')} class="btn-skippy" style="min-width: 260px;">無料体験レッスンについて</a>
+    </div>
+
+    <!-- SNS: big, obvious -->
+    <div class="flex justify-center gap-5 mb-10">
+      <a
+        href={LINE_OA_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LINE公式アカウント"
+        class="flex items-center justify-center w-12 h-12 rounded-full transition-transform hover:-translate-y-0.5"
+        style="background: var(--skippy-line-green);"
+      >
+        <Icon name="tabler:brand-line" class="w-7 h-7" style="color: #ffffff;" />
+      </a>
+      <a
+        href={INSTAGRAM_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+        class="flex items-center justify-center w-12 h-12 rounded-full transition-transform hover:-translate-y-0.5"
+        style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);"
+      >
+        <Icon name="tabler:brand-instagram" class="w-7 h-7" style="color: #ffffff;" />
+      </a>
+    </div>
+
+    <!-- Address -->
+    <p class="text-center text-xs leading-relaxed mb-8" style="color: rgb(255 255 255 / 60%); line-height: 1.9;">
+      〒534-0013 大阪府大阪市都島区内代町2-2-23<br />
+      Osaka Metro谷町線「野江内代駅」から徒歩圏
+    </p>
+
+    <!-- Bottom bar: copyright first, privacy underneath -->
+    <div class="border-t pt-6 text-center" style="border-color: rgb(255 255 255 / 15%);">
+      <p class="text-xs" style="color: rgb(255 255 255 / 55%);">© {year} Skippy English School. All rights reserved.</p>
+      <p class="mt-2">
+        <a href={getPermalink('/privacy')} class="text-xs hover:underline" style="color: rgb(255 255 255 / 55%);">プライバシーポリシー</a>
+      </p>
+    </div>
+  </div>
+</footer>

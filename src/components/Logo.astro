@@ -1,10 +1,22 @@
 ---
 import { SITE } from 'astrowind:config';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+// Drop the school logo into src/assets/images/ as logo.png (or .svg/.webp)
+// and it will automatically replace the text fallback below.
+const logoFiles = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/logo.{png,svg,webp,jpg}', {
+  eager: true,
+});
+const logo = Object.values(logoFiles)[0]?.default;
 ---
 
-<span
-  class="self-center ml-2 rtl:ml-0 rtl:mr-2 whitespace-nowrap"
-  style="font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 600; color: #4A90E2; line-height: 1.2;"
->
-  {SITE?.name}
-</span>
+{
+  logo ? (
+    <Image src={logo} alt={SITE?.name ?? 'Skippy English School'} class="h-10 md:h-11 w-auto" widths={[120, 240]} loading="eager" />
+  ) : (
+    <span class="self-center whitespace-nowrap font-heading" style="font-size: 20px; font-weight: 800; line-height: 1.2; color: var(--skippy-navy);">
+      Skippy<span style="color: var(--skippy-magenta);"> English School</span>
+    </span>
+  )
+}
