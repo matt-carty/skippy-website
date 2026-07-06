@@ -1,0 +1,39 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+const metadata = {
+  title: 'お知らせ',
+  description: 'スキッピー英会話からのお知らせ。募集状況、イベント、休講のご案内など。',
+};
+
+const announcements = (await getCollection('announcements', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const rendered = await Promise.all(
+  announcements.map(async (a) => ({ entry: a, Content: (await render(a)).Content }))
+);
+
+const fmt = (d: Date) => `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
+---
+
+<Layout metadata={metadata}>
+  <section class="py-14 md:py-20 px-6 bg-white">
+    <div class="max-w-3xl mx-auto">
+      <p class="eyebrow-label mb-3">NEWS</p>
+      <h1 class="text-3xl md:text-5xl font-extrabold mb-10">お知らせ</h1>
+
+      <div class="space-y-6">
+        {rendered.map(({ entry, Content }) => (
+          <article class="skippy-card">
+            <time class="text-xs font-bold" style="color: var(--skippy-muted);">{fmt(entry.data.date)}</time>
+            <h2 class="text-xl font-extrabold mt-1 mb-3">{entry.data.title}</h2>
+            <div class="text-sm leading-relaxed prose-sm" style="line-height: 2;">
+              <Content />
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

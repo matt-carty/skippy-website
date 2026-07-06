@@ -17,6 +17,10 @@ export const headerData = {
       href: getPermalink('/faq'),
     },
     {
+      text: 'お知らせ',
+      href: getPermalink('/news'),
+    },
+    {
       text: 'アクセス',
       href: getPermalink('/access'),
     },
@@ -40,6 +44,7 @@ export const footerData = {
         { text: 'クラス・スケジュール', href: getPermalink('/classes') },
         { text: '無料体験レッスン', href: getPermalink('/trial') },
         { text: 'よくある質問', href: getPermalink('/faq') },
+        { text: 'お知らせ', href: getPermalink('/news') },
         { text: 'アクセス・お問い合わせ', href: getPermalink('/access') },
       ],
     },

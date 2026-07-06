@@ -5,208 +5,221 @@ import '@fontsource-variable/inter';
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
-  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=M+PLUS+Rounded+1c:wght@700;800&display=swap"
   rel="stylesheet"
 />
 
 <style is:inline>
   /*
-   * Skippy English School — brand palette
-   * Warm Blue #4A90E2 · Soft Yellow #FFD166 · LINE Green #06C755
-   * Movement Orange #FF8A5B · Charcoal #2D3748 · Warm White #FDFBF7
+   * Skippy English School — brand system v2
+   * From the logo: Cyan #6AE6EE · Magenta #FF00A3 · Navy #302D55
+   * Borrowed warmth:  Cream #FFEDDA
+   * LINE Green #06C755 (LINE buttons only — never for anything else)
+   *
+   * Rules:
+   *  - Magenta is for CTAs and key emphasis ONLY. If everything is pink, nothing is.
+   *  - Cyan is decorative: marker underlines, soft tints, bubbles. Never body text.
+   *  - Navy replaces black everywhere.
    */
   :root {
     --aw-font-sans: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
     --aw-font-serif: 'Noto Sans JP', serif;
-    --aw-font-heading: 'Poppins', 'Noto Sans JP', sans-serif;
+    --aw-font-heading: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
 
-    /* Primary brand: Skippy Warm Blue */
-    --aw-color-primary: rgb(74 144 226);
-    /* Slightly deeper blue for hover */
-    --aw-color-secondary: rgb(52 110 185);
-    /* Movement Orange as accent */
-    --aw-color-accent: rgb(255 138 91);
+    /* Magenta, deepened for WCAG contrast on white */
+    --aw-color-primary: rgb(224 0 143);
+    --aw-color-secondary: rgb(196 0 126);
+    /* Cyan accent */
+    --aw-color-accent: rgb(106 230 238);
 
-    --aw-color-text-heading: rgb(45 55 72);
-    --aw-color-text-default: rgb(45 55 72);
-    --aw-color-text-muted: rgb(113 128 150);
-    --aw-color-text-page: rgb(45 55 72);
-    --aw-color-bg-page: rgb(253 251 247);
-    --aw-color-surface-soft: rgb(237 242 247);
+    --aw-color-text-heading: rgb(48 45 85);
+    --aw-color-text-default: rgb(48 45 85);
+    --aw-color-text-muted: rgb(110 108 140);
+    --aw-color-text-page: rgb(48 45 85);
+    --aw-color-bg-page: rgb(255 255 255);
+    --aw-color-surface-soft: rgb(255 237 218);
 
-    --aw-color-bg-page-dark: rgb(26 32 44);
+    --aw-color-bg-page-dark: rgb(48 45 85);
 
-    /* Skippy custom tokens */
-    --skippy-blue: #4A90E2;
-    --skippy-yellow: #FFD166;
-    --skippy-line-green: #06C755;
-    --skippy-orange: #FF8A5B;
-    --skippy-charcoal: #2D3748;
-    --skippy-warm-white: #FDFBF7;
-    --skippy-soft-grey: #718096;
-    --skippy-light-grey: #EDF2F7;
-
-    ::selection {
-      background-color: rgb(74 144 226 / 22%);
-    }
+    /* Skippy tokens */
+    --skippy-cyan: #6ae6ee;
+    --skippy-cyan-soft: #e9fbfd;
+    --skippy-magenta: #e0008f;
+    --skippy-magenta-bright: #ff00a3;
+    --skippy-navy: #302d55;
+    --skippy-cream: #ffedda;
+    --skippy-line-green: #06c755;
+    --skippy-muted: #6e6c8c;
   }
 
-  /* Force light-only — no dark mode for this brand */
+  ::selection {
+    background-color: rgb(106 230 238 / 45%);
+  }
+
   html {
     color-scheme: light;
   }
 
   body {
-    font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
-    background-color: var(--skippy-warm-white);
+    font-family: var(--aw-font-sans);
+    background-color: #ffffff;
+    color: var(--skippy-navy);
   }
 
-  /* LINE CTA button styles */
+  h1, h2, h3, .font-heading {
+    font-family: var(--aw-font-heading);
+    color: var(--skippy-navy);
+  }
+
+  /* ---- Signature: marker-pen underline (cyan) ---- */
+  .marker {
+    background-image: linear-gradient(transparent 62%, rgb(106 230 238 / 75%) 62%, rgb(106 230 238 / 75%) 94%, transparent 94%);
+    padding: 0 0.08em;
+  }
+  .marker-magenta {
+    background-image: linear-gradient(transparent 62%, rgb(255 0 163 / 30%) 62%, rgb(255 0 163 / 30%) 94%, transparent 94%);
+    padding: 0 0.08em;
+  }
+
+  /* ---- Signature: speech-bubble eyebrow ---- */
+  .bubble-eyebrow {
+    display: inline-block;
+    position: relative;
+    font-family: var(--aw-font-heading);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    color: var(--skippy-navy);
+    background: var(--skippy-cyan-soft);
+    border: 2px solid var(--skippy-cyan);
+    border-radius: 9999px;
+    padding: 6px 18px;
+  }
+  .bubble-eyebrow::after {
+    content: '';
+    position: absolute;
+    left: 24px;
+    bottom: -8px;
+    width: 12px;
+    height: 12px;
+    background: var(--skippy-cyan-soft);
+    border-right: 2px solid var(--skippy-cyan);
+    border-bottom: 2px solid var(--skippy-cyan);
+    transform: rotate(45deg) skew(10deg, 10deg);
+  }
+
+  /* ---- LINE CTA (green stays green — users know what LINE looks like) ---- */
   .btn-line {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 10px;
     background-color: var(--skippy-line-green);
     color: #ffffff;
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: var(--aw-font-sans);
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.2;
-    padding: 16px 24px;
-    border-radius: 8px;
+    padding: 16px 28px;
+    border-radius: 9999px;
     border: none;
     cursor: pointer;
     text-decoration: none;
-    transition: background-color 0.15s ease, transform 0.1s ease;
     min-height: 56px;
-    width: 100%;
+    box-shadow: 0 4px 14px rgb(6 199 85 / 35%);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+  }
+  .btn-line:hover {
+    background-color: #05b34c;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgb(6 199 85 / 45%);
   }
 
-  .btn-line:hover {
-    background-color: #05b04d;
+  /* ---- Magenta CTA (non-LINE actions) ---- */
+  .btn-skippy {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: var(--skippy-magenta);
+    color: #ffffff;
+    font-family: var(--aw-font-sans);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+    padding: 16px 28px;
+    border-radius: 9999px;
+    text-decoration: none;
+    min-height: 56px;
+    transition: transform 0.15s ease, background-color 0.15s ease;
+  }
+  .btn-skippy:hover {
+    background-color: var(--aw-color-secondary);
     transform: translateY(-1px);
   }
 
-  .btn-line:active {
-    transform: translateY(0);
-  }
-
-  /* Fixed LINE bottom bar — mobile only */
-  .line-bottom-bar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    height: 56px;
-    background-color: var(--skippy-line-green);
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.15);
-    display: flex;
+  /* ---- Ghost / outline button on navy or photo backgrounds ---- */
+  .btn-ghost-light {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-  }
-
-  @media (min-width: 768px) {
-    .line-bottom-bar {
-      display: none;
-    }
-  }
-
-  .line-bottom-bar a {
-    color: #ffffff;
-    font-family: 'Noto Sans JP', sans-serif;
+    padding: 14px 26px;
+    border-radius: 9999px;
+    border: 2px solid rgb(48 45 85 / 25%);
+    color: var(--skippy-navy);
+    font-weight: 700;
     font-size: 15px;
-    font-weight: 600;
     text-decoration: none;
+    min-height: 52px;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+  }
+  .btn-ghost-light:hover {
+    border-color: var(--skippy-magenta);
+    color: var(--skippy-magenta);
+  }
+
+  /* ---- Section rhythm ---- */
+  .section-cream { background-color: var(--skippy-cream); }
+  .section-cyan-soft { background-color: var(--skippy-cyan-soft); }
+  .section-navy { background-color: var(--skippy-navy); }
+
+  /* ---- Cards ---- */
+  .skippy-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 4px 20px rgb(48 45 85 / 8%);
+  }
+
+  /* ---- Photo placeholder (until real lesson photos land) ---- */
+  .photo-slot {
     display: flex;
     align-items: center;
-    gap: 8px;
-    width: 100%;
-    height: 100%;
     justify-content: center;
-    padding: 0 16px;
-  }
-
-  /* Give page content bottom padding so it clears the fixed bar */
-  @media (max-width: 767px) {
-    body {
-      padding-bottom: 56px;
-    }
-  }
-
-  /* Skippy heading styles */
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Noto Sans JP', sans-serif;
-    color: var(--skippy-charcoal);
-  }
-
-  /* Section eyebrow labels use Poppins */
-  .eyebrow-label {
-    font-family: 'Poppins', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--skippy-orange);
-  }
-
-  /* Skippy section backgrounds */
-  .bg-skippy-blue { background-color: var(--skippy-blue); }
-  .bg-skippy-yellow { background-color: var(--skippy-yellow); }
-  .bg-skippy-yellow-soft { background-color: rgb(255 209 102 / 20%); }
-  .bg-skippy-warm-white { background-color: var(--skippy-warm-white); }
-  .bg-skippy-light-grey { background-color: var(--skippy-light-grey); }
-
-  .text-skippy-blue { color: var(--skippy-blue); }
-  .text-skippy-orange { color: var(--skippy-orange); }
-  .text-skippy-charcoal { color: var(--skippy-charcoal); }
-  .text-skippy-muted { color: var(--skippy-soft-grey); }
-
-  /* Comparison table styles */
-  .comparison-table th, .comparison-table td {
-    padding: 12px 16px;
-    font-size: 15px;
-    line-height: 1.6;
-    border-bottom: 1px solid #e2e8f0;
-  }
-
-  .comparison-table th {
-    font-weight: 700;
+    border-radius: 20px;
+    border: 2px dashed rgb(106 230 238);
+    background: linear-gradient(135deg, var(--skippy-cyan-soft) 0%, #ffffff 100%);
+    color: var(--skippy-muted);
     font-size: 14px;
+    font-weight: 500;
+    min-height: 220px;
+    text-align: center;
+    padding: 16px;
   }
 
-  /* FAQ accordion */
-  .faq-item details summary {
-    cursor: pointer;
-    list-style: none;
-    padding: 16px 0;
-    font-weight: 700;
-    font-size: 16px;
-    color: var(--skippy-charcoal);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #e2e8f0;
+  /* ---- Eyebrow label (latin, small) ---- */
+  .eyebrow-label {
+    font-family: var(--aw-font-heading);
+    font-weight: 800;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--skippy-magenta);
   }
 
-  .faq-item details summary::after {
-    content: '+';
-    font-size: 20px;
-    color: var(--skippy-blue);
-    flex-shrink: 0;
-    margin-left: 12px;
-  }
-
-  .faq-item details[open] summary::after {
-    content: '−';
-  }
-
-  .faq-item details p {
-    padding: 16px 0;
-    margin: 0;
-    font-size: 16px;
-    line-height: 1.8;
-    color: var(--skippy-charcoal);
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .btn-line, .btn-skippy, .btn-ghost-light { transition: none; }
+    .btn-line:hover, .btn-skippy:hover { transform: none; }
   }
 </style>

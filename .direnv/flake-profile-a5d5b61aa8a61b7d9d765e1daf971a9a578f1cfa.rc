@@ -25,7 +25,7 @@ IN_NIX_SHELL='impure'
 export IN_NIX_SHELL
 LD='ld'
 export LD
-LINENO='76'
+LINENO='79'
 MACHTYPE='x86_64-pc-linux-gnu'
 NIX_BINTOOLS='/nix/store/x7ikkplbrv5dlihy1bqq32gp6lilkval-binutils-wrapper-2.44'
 export NIX_BINTOOLS
@@ -37,7 +37,7 @@ NIX_CC='/nix/store/hb2bs5fg5wkm04x565737qd5nh2hy5nk-gcc-wrapper-15.2.0'
 export NIX_CC
 NIX_CC_WRAPPER_TARGET_HOST_x86_64_unknown_linux_gnu='1'
 export NIX_CC_WRAPPER_TARGET_HOST_x86_64_unknown_linux_gnu
-NIX_CFLAGS_COMPILE=' -frandom-seed=d15944392f -isystem /nix/store/h2barca1k5pmvcyl9fwrzwrb4cn1b248-nodejs-22.22.2/include -isystem /nix/store/njqz7sk4430rbv8jz1jscgf24gnkxk2n-vips-8.18.2-dev/include -isystem /nix/store/4lsi1w9paqi22y1vn29ix5l5gvjikzqy-glib-2.86.3-dev/include -isystem /nix/store/gc52c68s6cfcrav5pypmrf3sq5k554ih-zlib-1.3.2-dev/include -isystem /nix/store/qqwdjfcvsw0v2xan4d0x5j0jqx8gk74f-libffi-3.5.2-dev/include -isystem /nix/store/kfci1gnn12ip5xy492m0hd10hmgyxr6x-gettext-0.26/include -isystem /nix/store/lk3q0wyylzj27ray0siz7r03g05da9vd-glibc-iconv-2.42/include -isystem /nix/store/h2barca1k5pmvcyl9fwrzwrb4cn1b248-nodejs-22.22.2/include -isystem /nix/store/njqz7sk4430rbv8jz1jscgf24gnkxk2n-vips-8.18.2-dev/include -isystem /nix/store/4lsi1w9paqi22y1vn29ix5l5gvjikzqy-glib-2.86.3-dev/include -isystem /nix/store/gc52c68s6cfcrav5pypmrf3sq5k554ih-zlib-1.3.2-dev/include -isystem /nix/store/qqwdjfcvsw0v2xan4d0x5j0jqx8gk74f-libffi-3.5.2-dev/include -isystem /nix/store/kfci1gnn12ip5xy492m0hd10hmgyxr6x-gettext-0.26/include -isystem /nix/store/lk3q0wyylzj27ray0siz7r03g05da9vd-glibc-iconv-2.42/include'
+NIX_CFLAGS_COMPILE=' -frandom-seed=svkc3ibrjh -isystem /nix/store/h2barca1k5pmvcyl9fwrzwrb4cn1b248-nodejs-22.22.2/include -isystem /nix/store/njqz7sk4430rbv8jz1jscgf24gnkxk2n-vips-8.18.2-dev/include -isystem /nix/store/4lsi1w9paqi22y1vn29ix5l5gvjikzqy-glib-2.86.3-dev/include -isystem /nix/store/gc52c68s6cfcrav5pypmrf3sq5k554ih-zlib-1.3.2-dev/include -isystem /nix/store/qqwdjfcvsw0v2xan4d0x5j0jqx8gk74f-libffi-3.5.2-dev/include -isystem /nix/store/kfci1gnn12ip5xy492m0hd10hmgyxr6x-gettext-0.26/include -isystem /nix/store/lk3q0wyylzj27ray0siz7r03g05da9vd-glibc-iconv-2.42/include -isystem /nix/store/h2barca1k5pmvcyl9fwrzwrb4cn1b248-nodejs-22.22.2/include -isystem /nix/store/njqz7sk4430rbv8jz1jscgf24gnkxk2n-vips-8.18.2-dev/include -isystem /nix/store/4lsi1w9paqi22y1vn29ix5l5gvjikzqy-glib-2.86.3-dev/include -isystem /nix/store/gc52c68s6cfcrav5pypmrf3sq5k554ih-zlib-1.3.2-dev/include -isystem /nix/store/qqwdjfcvsw0v2xan4d0x5j0jqx8gk74f-libffi-3.5.2-dev/include -isystem /nix/store/kfci1gnn12ip5xy492m0hd10hmgyxr6x-gettext-0.26/include -isystem /nix/store/lk3q0wyylzj27ray0siz7r03g05da9vd-glibc-iconv-2.42/include'
 export NIX_CFLAGS_COMPILE
 NIX_ENFORCE_NO_NATIVE='1'
 export NIX_ENFORCE_NO_NATIVE

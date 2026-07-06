@@ -2,255 +2,99 @@
 import Layout from '~/layouts/PageLayout.astro';
 import { LINE_OA_URL } from '~/navigation';
 
+const year = new Date().getFullYear();
+const yearsInJapan = year - 2012;
+const yearsRunning = year - 2018;
+
 const metadata = {
-  title: 'メソッドについて | TPR・話す英語の理由',
-  description: 'スキッピーがTPRメソッドを採用する理由。机もなく、教科書もない。子どもが体を動かしながら自然に話す英語を習得する、その仕組みをご説明します。',
+  title: 'マット先生とスキッピーについて',
+  description:
+    'スキッピー英会話のマット先生（オーストラリア出身・大阪で子育て中）と、話す→読む→書くの順で学ぶ理由。2018年開校、内代町の小さな英会話教室です。',
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- Page header -->
-  <section class="py-16 px-6 text-center" style="background: linear-gradient(135deg, #4A90E2 0%, #2d5a8e 100%);">
-    <p class="eyebrow-label mb-3" style="color: #FFD166;">ABOUT SKIPPY</p>
-    <h1 class="text-3xl md:text-5xl font-bold text-white" style="font-family: 'Noto Sans JP', sans-serif;">
-      マットティーチャーとスキッピーについて
-    </h1>
-  </section>
+  <!-- Story -->
+  <section class="py-14 md:py-20 px-6 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <p class="eyebrow-label mb-3">ABOUT</p>
+      <h1 class="text-3xl md:text-5xl font-extrabold mb-10" style="line-height: 1.4;">マット先生と、<br class="md:hidden" />スキッピーの話。</h1>
 
-  <!-- Section 1: Matthew's Introduction -->
-  <section class="py-20 px-6" style="background-color: #FDFBF7;">
-    <div class="max-w-5xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <!-- Photo placeholder -->
-        <div class="order-1 md:order-1">
-          <div class="rounded-xl overflow-hidden" style="box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-            <img
-              src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80"
-              alt="マットティーチャー — Skippy English School"
-              class="w-full h-80 md:h-96 object-cover"
-              loading="lazy"
-            />
-          </div>
-          <p class="text-xs text-center mt-2" style="color: #718096; font-family: 'Noto Sans JP', sans-serif;">
-            ※ 実際の写真は近日公開予定
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-start">
+        <!-- TODO: real photo of Matt (with family or teaching) -->
+        <div class="photo-slot md:col-span-2" style="min-height: 300px;">📷 マット先生の写真がここに入ります</div>
+
+        <div class="md:col-span-3 space-y-5 text-base leading-relaxed" style="line-height: 2.05;">
+          <!-- NOTE FOR MATT: story drafted from the current site's About section — please review the details and adjust anything that isn't quite right. -->
+          <p>
+            マット先生（Cartwright Matt）はオーストラリア出身。{yearsInJapan}年前の2012年に来日しました。いまは大阪で、自分の子どもをバイリンガルに育てている真っ最中の父親でもあります。
           </p>
-        </div>
-
-        <!-- Text -->
-        <div class="order-2 md:order-2">
-          <p class="eyebrow-label mb-3">ABOUT SKIPPY</p>
-          <h2 class="text-2xl md:text-3xl font-bold mb-6" style="color: #4A90E2; font-family: 'Noto Sans JP', sans-serif;">
-            マットティーチャーです
-          </h2>
-          <div class="text-base leading-relaxed space-y-4" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif; line-height: 1.8;">
-            <p>
-              マットです。内代町でSkippy English Schoolを運営しています。
-            </p>
-            <p>
-              ここの生徒全員の名前と好きなことを知っています。毎週、子どもたちが「今日は何するの？」って笑顔で入ってくる瞬間が、この仕事の一番好きなところです。
-            </p>
-            <p>
-              私が教えているのは「英語」じゃなくて、「英語を使って遊ぶこと」。子どもたちは勉強だと思っていません。でも、体を動かしながら覚えた言葉は、ずっと残ります。
-            </p>
-            <p>
-              内代町に住んで長年。この地域の子どもたちと一緒に成長できることが、何よりの喜びです。
-            </p>
-          </div>
+          <p>
+            2018年、内代町にスキッピー英会話を開きました。以来{yearsRunning}年、講師を雇って入れ替えるのではなく、<span class="marker">全クラスをマット先生ひとりで</span>教えています。生徒全員の名前と、好きなキャラクターと、得意なことを知っている——小さな教室だからできることです。
+          </p>
+          <p>
+            教室に、ずらっと並んだ机と椅子はありません。子どもは座って覚えるより、動きながら使ったことばのほうがずっとよく身につくからです。
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Section 2: Speaking vs Reading comparison -->
-  <section class="py-20 px-6" style="background-color: #EDF2F7;">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl md:text-3xl font-bold text-center mb-4" style="color: #4A90E2; font-family: 'Noto Sans JP', sans-serif;">
-        普通の英会話教室とSkippy、何が違う？
-      </h2>
-      <p class="text-center text-base mb-12" style="color: #718096; font-family: 'Noto Sans JP', sans-serif;">
-        脳の学習順序が違います。
-      </p>
-
-      <!-- Comparison table — stacked cards on mobile -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-        <!-- Traditional -->
-        <div class="rounded-xl overflow-hidden">
-          <div class="py-4 px-6 text-center font-bold text-base" style="background-color: #718096; color: #ffffff; font-family: 'Noto Sans JP', sans-serif;">
-            普通の英会話教室
-          </div>
-          <div class="bg-white p-6 space-y-3">
-            {[
-              '机に座って、フラッシュカードを見る',
-              '英語を「読む」練習',
-              '受動的に聞く',
-              '教科書中心',
-              '大人数クラス',
-            ].map((item) => (
-              <div class="flex items-start gap-3 py-2 border-b border-gray-100">
-                <span class="mt-1" style="color: #718096;">✗</span>
-                <span class="text-base" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif; line-height: 1.6;">{item}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <!-- Skippy -->
-        <div class="rounded-xl overflow-hidden">
-          <div class="py-4 px-6 text-center font-bold text-base" style="background-color: #4A90E2; color: #ffffff; font-family: 'Noto Sans JP', sans-serif;">
-            Skippy English School
-          </div>
-          <div class="p-6 space-y-3" style="background-color: rgb(255 209 102 / 20%);">
-            {[
-              '机なし。ずっと動き回る',
-              '英語を「話す」練習',
-              '体で反応する',
-              '遊び中心',
-              '少人数（6〜8名）',
-            ].map((item) => (
-              <div class="flex items-start gap-3 py-2 border-b" style="border-color: rgba(0,0,0,0.05);">
-                <span class="mt-1" style="color: #06C755;">✓</span>
-                <span class="text-base font-semibold" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif; line-height: 1.6;">{item}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <!-- Explanation -->
-      <div class="text-center max-w-2xl mx-auto">
-        <p class="text-base leading-relaxed" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif; line-height: 1.8;">
-          脳の学習順序は、<strong>聞く → 話す → 読む → 書く</strong>、です。<br /><br />
-          普通の英会話教室は「読む」から始めます。スキッピーは「話す」から始めます。<br />
-          順序が違うだけで、結果が全く変わります。
+  <!-- Why speak-first -->
+  <section class="section-cream py-14 md:py-20 px-6">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-extrabold mb-6">なぜ「まず話す」のか</h2>
+      <div class="space-y-5 text-base leading-relaxed" style="line-height: 2.05;">
+        <p>
+          日本語を覚えたとき、お子さんは文字から始めましたか？ 違うはずです。聞いて、まねして、話して——読み書きはずっとあとでした。それが、人間がことばを覚える自然な順番です。
+        </p>
+        <p>
+          スキッピーは、その順番のとおりに教えます。<span class="font-bold">まず話す。話せるようになったら、読む。読めるようになって、伝えたいことができたら、書く。</span>カリキュラムは、世界中の子ども英語教育で使われている<span class="font-bold">Genki English</span>。歌と動きで、英語を「勉強」ではなく「使うことば」として覚えます。
+        </p>
+        <p>
+          この順番は、結果も出しています。開校のころから通っているクォッカクラスの子どもたち（3〜5年目）は、話す力を土台に、いま「読む」段階に進んでいます。
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Section 3: TPR Method explainer -->
-  <section class="py-20 px-6" style="background-color: #FDFBF7;">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl md:text-3xl font-bold mb-6" style="color: #4A90E2; font-family: 'Noto Sans JP', sans-serif;">
-        レッスンの様子
-      </h2>
+  <!-- Free time -->
+  <section class="py-14 md:py-20 px-6 bg-white">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-extrabold mb-6">レッスンの前後に、「英語フリータイム」</h2>
+      <p class="text-base leading-relaxed mb-4" style="line-height: 2.05;">
+        レッスンは45分ですが、その前後15分ずつは教室で自由に過ごせるフリータイムです。早めに来て英語で遊ぶ、終わってからもう少し残る——ことばは、授業の外で使ったぶんだけ本物になります。
+      </p>
+      <p class="text-base leading-relaxed" style="line-height: 2.05;">
+        月謝は変わりません。¥11,000にすべて含まれています。
+      </p>
+    </div>
+  </section>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-        <!-- Text -->
-        <div>
-          <div class="text-base leading-relaxed space-y-4 mb-8" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif; line-height: 1.8;">
-            <p>
-              「Jump!」と言いながら跳ぶ。「Stand up!」と言いながら立つ。
-            </p>
-            <p>
-              体で覚えた言葉は、忘れません。
-            </p>
-            <p>
-              これが、TPR（Total Physical Response）メソッドです。子どもの脳は、体の動きと言葉をセットで記憶します。だから、教科書を使わなくても、自然に英語が身につきます。
-            </p>
-            <p>
-              レッスン中、子どもたちはずっと動いています。座っている時間は、ほとんどありません。最初は恥ずかしがっていた子も、2〜3回目には一緒に跳んで、笑って、英語を使っています。
-            </p>
-          </div>
-
-          <!-- Age groups -->
-          <h3 class="text-lg font-bold mb-4" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif;">年齢別クラス</h3>
-          <ul class="space-y-3">
-            <li class="flex items-start gap-3">
-              <span class="text-xl">✨</span>
-              <div>
-                <span class="font-bold" style="color: #4A90E2; font-family: 'Noto Sans JP', sans-serif;">プレKids（2〜3歳）</span>
-                <span style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif;"> — 保護者同伴。遊びながら英語の音に慣れる</span>
-              </div>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-xl">✨</span>
-              <div>
-                <span class="font-bold" style="color: #4A90E2; font-family: 'Noto Sans JP', sans-serif;">Kidsクラス（4〜5歳）</span>
-                <span style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif;"> — 体を動かしながら話す英語を習得</span>
-              </div>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-xl">✨</span>
-              <div>
-                <span class="font-bold" style="color: #4A90E2; font-family: 'Noto Sans JP', sans-serif;">Juniorクラス（6〜8歳）</span>
-                <span style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif;"> — 会話の幅を広げ、読み書きへ移行準備</span>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Video/image placeholder -->
-        <div>
-          <div class="rounded-xl overflow-hidden mb-3" style="box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-            <img
-              src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=800&q=80"
-              alt="TPRレッスンの様子 — 体を動かしながら英語を学ぶ子どもたち"
-              class="w-full h-64 object-cover"
-              loading="lazy"
-            />
-          </div>
-          <p class="text-xs text-center" style="color: #718096; font-family: 'Noto Sans JP', sans-serif;">
-            ※ 実際のレッスン動画は近日公開予定
-          </p>
-        </div>
+  <!-- Events -->
+  <section class="section-cyan-soft py-14 md:py-20 px-6">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-extrabold mb-6">ハロウィンとクリスマスは、お友だちも一緒に</h2>
+      <p class="text-base leading-relaxed mb-8" style="line-height: 2.05;">
+        毎年のハロウィンパーティーとクリスマスパーティーは、生徒がお友だちを連れてきてOKの日。スキッピーがどんな場所か、レッスンを申し込む前に、遊びながら見てもらえます。
+      </p>
+      <!-- TODO: real event photos go here -->
+      <div class="grid grid-cols-2 gap-4">
+        <div class="photo-slot" style="min-height: 160px;">📷 ハロウィンの写真</div>
+        <div class="photo-slot" style="min-height: 160px;">📷 クリスマスの写真</div>
       </div>
     </div>
   </section>
 
-  <!-- Section 4: Parent testimonials — methodology-focused -->
-  <section class="py-20 px-6" style="background-color: #EDF2F7;">
-    <div class="max-w-4xl mx-auto">
-      <p class="eyebrow-label text-center mb-3">PARENT VOICES</p>
-      <h2 class="text-2xl md:text-3xl font-bold text-center mb-12" style="color: #4A90E2; font-family: 'Noto Sans JP', sans-serif;">
-        保護者の声
-      </h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Testimonial: method-focused -->
-        <div class="flex flex-col rounded-xl p-6" style="background: #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-          <div class="text-3xl mb-4" style="color: #FFD166;">❝</div>
-          <blockquote class="flex-grow text-base leading-relaxed mb-6" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif; line-height: 1.8;">
-            6歳の息子は、普通の英語教室だと集中が続かないタイプでした。でもスキッピーは違います。体を動かしながら英語を話すので、「勉強」だと気づかずに自然に身につけています。4週間で家でも英語のフレーズを使うようになり、成長を実感しています。
-          </blockquote>
-          <cite class="text-sm not-italic border-t pt-4" style="color: #718096; font-family: 'Noto Sans JP', sans-serif; border-color: #EDF2F7;">
-            — 山田様<br />
-            <span class="text-xs">お子様: 6歳 · Kids クラス</span>
-          </cite>
-        </div>
-
-        <!-- Testimonial: shyness / confidence -->
-        <div class="flex flex-col rounded-xl p-6" style="background: #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-          <div class="text-3xl mb-4" style="color: #FFD166;">❝</div>
-          <blockquote class="flex-grow text-base leading-relaxed mb-6" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif; line-height: 1.8;">
-            最初は恥ずかしがっていた4歳の息子が、3ヶ月後には家で英語の歌を歌うようになりました。
-          </blockquote>
-          <cite class="text-sm not-italic border-t pt-4" style="color: #718096; font-family: 'Noto Sans JP', sans-serif; border-color: #EDF2F7;">
-            — 田中様<br />
-            <span class="text-xs">お子様: 4歳 · Kids クラス</span>
-          </cite>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 5: CTA -->
-  <section class="py-20 px-6 text-center" style="background-color: #EDF2F7;">
-    <div class="max-w-2xl mx-auto">
-      <p class="text-xl font-bold mb-6 leading-relaxed" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif; line-height: 1.7;">
-        「まず一回、見に来てください。<br />
-        無料体験レッスンで、お子さんの顔を見てほしいです。」
-      </p>
-      <p class="text-base mb-8" style="color: #718096; font-family: 'Noto Sans JP', sans-serif;">
-        — マットティーチャー
-      </p>
-
-      <a href={LINE_OA_URL} target="_blank" rel="noopener noreferrer"
-        class="btn-line text-lg font-semibold"
-        style="max-width: 400px; margin: 0 auto;">
+  <!-- CTA -->
+  <section class="py-14 md:py-20 px-6 bg-white">
+    <div class="max-w-xl mx-auto text-center">
+      <h2 class="text-2xl md:text-3xl font-extrabold mb-6">まずは、教室の空気を見に来てください。</h2>
+      <a href={LINE_OA_URL} target="_blank" rel="noopener noreferrer" class="btn-line text-lg" style="max-width: 400px; margin: 0 auto;">
         <svg width="24" height="24" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M38 20.3C38 13.1 31 7.3 22.4 7.3C13.8 7.3 6.8 13.1 6.8 20.3C6.8 26.7 12.2 32.1 19.7 33.1C20.2 33.2 20.9 33.4 21.1 33.8C21.3 34.2 21.2 34.8 21.1 35.2L20.7 37.4C20.6 37.8 20.3 39 22.4 38.1C24.5 37.2 33.2 31.8 37.1 27.3C38.9 25.3 38 22.5 38 20.3Z" fill="white"/>
         </svg>
-        LINEで体験レッスンを予約する
+        LINEで無料体験を予約する
       </a>
     </div>
   </section>
