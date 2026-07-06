@@ -67,6 +67,16 @@ const postCollection = defineCollection({
   }),
 });
 
+const announcementCollection = defineCollection({
+  loader: glob({ pattern: ['*.md', '*.mdx'], base: 'src/content/announcements' }),
+  schema: z.object({
+    title: z.string(),
+    date: z.coerce.date(),
+    draft: z.boolean().optional(),
+  }),
+});
+
 export const collections = {
   post: postCollection,
+  announcements: announcementCollection,
 };

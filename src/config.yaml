@@ -1,6 +1,6 @@
 site:
   name: Skippy English School
-  site: 'https://skippy-english-school.vercel.app'
+  site: 'https://skippyenglish.school'
   base: '/'
   trailingSlash: false
 
@@ -10,7 +10,7 @@ metadata:
   title:
     default: 'Skippy English School | 英会話教室 内代町・都島区'
     template: '%s | Skippy English School'
-  description: '大阪・都島区内代町のこども英会話教室。2〜8歳対象。マットティーチャーによる少人数TPRレッスン。話すことから始める英語教育。無料体験レッスン受付中。'
+  description: '大阪市都島区内代町のこども英会話教室。まず話す、それから読む。月謝11,000円（入会金・教材費0円）。無料体験は一年中受付、LINEでかんたん予約。'
   robots:
     index: true
     follow: true

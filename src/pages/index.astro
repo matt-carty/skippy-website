@@ -1,229 +1,315 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import { LINE_OA_URL } from '~/navigation';
+import { getCollection } from 'astro:content';
+
+const year = new Date().getFullYear();
+const yearsInJapan = year - 2012;
+const yearsRunning = year - 2018;
+
+const announcements = (await getCollection('announcements', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+const fmt = (d: Date) => `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
 
 const metadata = {
-  title: '英会話教室 内代町・都島区 | Skippy English School — 話す英語を幼児から',
-  description: '大阪・都島区内代町のこども英会話教室。2〜8歳対象。マットティーチャーによる少人数TPRレッスン。話すことから始める英語教育。無料体験レッスン受付中。',
+  title: 'Skippy English School | まず話す英会話教室 — 内代町・都島区',
+  description:
+    '大阪市都島区内代町のこども英会話教室。まず話す、それから読む。月謝11,000円（入会金・教材費0円）、少人数クラス、無料体験は一年中受付。LINEでかんたん予約。',
   ignoreTitleTemplate: true,
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Section -->
-  <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden" style="background: linear-gradient(135deg, #1a2a4a 0%, #2d5a8e 60%, #4A90E2 100%);">
-    <!-- Background pattern -->
-    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 20% 50%, #FFD166 0%, transparent 50%), radial-gradient(circle at 80% 20%, #FF8A5B 0%, transparent 50%);"></div>
+  <!-- ============ HERO ============ -->
+  <section class="relative overflow-hidden bg-white">
+    <!-- decorative bubbles -->
+    <div class="pointer-events-none absolute -top-16 -right-16 w-64 h-64 rounded-full" style="background: var(--skippy-cyan-soft);" aria-hidden="true"></div>
+    <div class="pointer-events-none absolute top-40 -left-24 w-48 h-48 rounded-full" style="background: rgb(255 237 218 / 70%);" aria-hidden="true"></div>
 
-    <div class="relative z-10 max-w-3xl mx-auto px-6 py-24 text-center">
-      <!-- Eyebrow -->
-      <p class="eyebrow-label mb-4" style="color: #FFD166;">SKIPPY ENGLISH SCHOOL</p>
+    <div class="relative z-10 max-w-5xl mx-auto px-6 pt-16 pb-20 md:pt-24 md:pb-28">
+      <div class="max-w-2xl">
+        <p class="eyebrow-label mb-5">SKIPPY ENGLISH SCHOOL — 内代町（都島区）の英会話教室</p>
 
-      <!-- Main headline -->
-      <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6" style="color: #ffffff; font-family: 'Noto Sans JP', sans-serif; line-height: 1.3;">
-        3〜6歳の今が、<br />英語が自然に身につく<br />黄金期。
-      </h1>
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6" style="line-height: 1.25;">
+          まず<span class="marker">話す</span>、<br />それから読む。
+        </h1>
 
-      <!-- Subtitle -->
-      <p class="text-base md:text-xl mb-10" style="color: rgba(255,255,255,0.9); font-family: 'Noto Sans JP', sans-serif; line-height: 1.7;">
-        Skippy English School — 内代町（都島区）のこども英語教室
-      </p>
+        <p class="text-lg md:text-xl leading-relaxed mb-4" style="color: var(--skippy-navy); line-height: 1.9;">
+          ことばは、話せるようになってから読む。<br class="hidden md:inline" />
+          子どもが日本語を覚えたのと同じ順番で、英語を身につける教室です。
+        </p>
 
-      <!-- Primary CTA -->
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href={LINE_OA_URL} target="_blank" rel="noopener noreferrer"
-          class="btn-line text-lg font-semibold"
-          style="max-width: 360px; margin: 0 auto;">
-          <svg width="24" height="24" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M38 20.3C38 13.1 31 7.3 22.4 7.3C13.8 7.3 6.8 13.1 6.8 20.3C6.8 26.7 12.2 32.1 19.7 33.1C20.2 33.2 20.9 33.4 21.1 33.8C21.3 34.2 21.2 34.8 21.1 35.2L20.7 37.4C20.6 37.8 20.3 39 22.4 38.1C24.5 37.2 33.2 31.8 37.1 27.3C38.9 25.3 38 22.5 38 20.3Z" fill="white"/>
-          </svg>
-          無料体験レッスンを予約する
-        </a>
-        <a href="/trial"
-          class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold text-base transition"
-          style="background: rgba(255,255,255,0.15); color: #ffffff; border: 2px solid rgba(255,255,255,0.4); min-height: 56px; font-family: 'Noto Sans JP', sans-serif;">
-          体験レッスンについて詳しく
-        </a>
-      </div>
+        <!-- honest recruiting badge -->
+        <p class="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-8 text-sm font-bold" style="background: rgb(255 0 163 / 8%); color: var(--skippy-magenta);">
+          <span class="inline-block w-2 h-2 rounded-full" style="background: var(--skippy-magenta);"></span>
+          ウォンバットクラス（4〜7歳）募集中 — 水曜・土曜 各クラス残り3席（{year}年7月現在）
+        </p>
 
-      <!-- Location hint -->
-      <p class="mt-8 text-sm" style="color: rgba(255,255,255,0.65); font-family: 'Noto Sans JP', sans-serif;">
-        🗺️ 都島区内代町 | 鶴橋・森ノ宮・京橋から自転車圏内
-      </p>
-    </div>
-  </section>
-
-  <!-- Section 2: Why It Works — 3-feature grid -->
-  <section class="py-20 px-6" style="background-color: #FDFBF7;">
-    <div class="max-w-5xl mx-auto">
-      <p class="eyebrow-label text-center mb-3">WHY SKIPPY WORKS</p>
-      <h2 class="text-2xl md:text-4xl font-bold text-center mb-12" style="color: #4A90E2; font-family: 'Noto Sans JP', sans-serif;">
-        スキッピーの3つの特徴
-      </h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Feature 1 -->
-        <div class="rounded-xl p-8 text-center" style="background-color: rgb(255 209 102 / 20%);">
-          <div class="text-5xl mb-4">🗣️</div>
-          <h3 class="text-lg font-bold mb-3" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif;">話す英語から始める</h3>
-          <p class="text-base leading-relaxed" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif; line-height: 1.8;">
-            読むことより先に、話すこと。子どもが自然に言葉を覚える順序で学びます。
-          </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href={LINE_OA_URL} target="_blank" rel="noopener noreferrer" class="btn-line text-lg">
+            <svg width="24" height="24" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M38 20.3C38 13.1 31 7.3 22.4 7.3C13.8 7.3 6.8 13.1 6.8 20.3C6.8 26.7 12.2 32.1 19.7 33.1C20.2 33.2 20.9 33.4 21.1 33.8C21.3 34.2 21.2 34.8 21.1 35.2L20.7 37.4C20.6 37.8 20.3 39 22.4 38.1C24.5 37.2 33.2 31.8 37.1 27.3C38.9 25.3 38 22.5 38 20.3Z" fill="white"/>
+            </svg>
+            LINEで無料体験を予約する
+          </a>
+          <a href="#pricing" class="btn-ghost-light">料金を見る（全部書いてあります）</a>
         </div>
 
-        <!-- Feature 2 -->
-        <div class="rounded-xl p-8 text-center" style="background-color: rgb(255 209 102 / 20%);">
-          <div class="text-5xl mb-4">🏃</div>
-          <h3 class="text-lg font-bold mb-3" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif;">体で覚えるTPR</h3>
-          <p class="text-base leading-relaxed" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif; line-height: 1.8;">
-            「Jump!」と言いながら跳ぶ。「Stand up!」と言いながら立つ。体で覚えた言葉は、忘れません。
-          </p>
-        </div>
-
-        <!-- Feature 3 -->
-        <div class="rounded-xl p-8 text-center" style="background-color: rgb(255 209 102 / 20%);">
-          <div class="text-5xl mb-4">👨‍🏫</div>
-          <h3 class="text-lg font-bold mb-3" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif;">ネイティブ少人数</h3>
-          <p class="text-base leading-relaxed" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif; line-height: 1.8;">
-            マットティーチャーが、全員の名前と好きなことを知っています。
-          </p>
-        </div>
-      </div>
-
-      <!-- Link to method page -->
-      <div class="text-center mt-10">
-        <a href="/about" class="inline-flex items-center gap-2 font-semibold transition" style="color: #4A90E2; font-family: 'Noto Sans JP', sans-serif; font-size: 16px;">
-          TPRメソッドについて詳しく →
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 3: Social Proof — 3 testimonial cards -->
-  <section class="py-20 px-6" style="background-color: #EDF2F7;">
-    <div class="max-w-5xl mx-auto">
-      <p class="eyebrow-label text-center mb-3">PARENT VOICES</p>
-      <h2 class="text-2xl md:text-4xl font-bold text-center mb-12" style="color: #4A90E2; font-family: 'Noto Sans JP', sans-serif;">
-        保護者の声
-      </h2>
-
-      <!-- 3-card testimonial grid -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-        <!-- Testimonial 1 -->
-        <div class="flex flex-col rounded-xl p-6" style="background: #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-          <div class="text-3xl mb-4" style="color: #FFD166;">❝</div>
-          <blockquote class="flex-grow text-base leading-relaxed mb-6" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif; line-height: 1.8;">
-            最初は恥ずかしがっていた4歳の息子が、3ヶ月後には家で英語の歌を歌うようになりました。
-          </blockquote>
-          <cite class="text-sm not-italic border-t pt-4" style="color: #718096; font-family: 'Noto Sans JP', sans-serif; border-color: #EDF2F7;">
-            — 田中様<br />
-            <span class="text-xs">お子様: 4歳 · Kids クラス</span>
-          </cite>
-        </div>
-
-        <!-- Testimonial 2 -->
-        <div class="flex flex-col rounded-xl p-6" style="background: #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-          <div class="text-3xl mb-4" style="color: #FFD166;">❝</div>
-          <blockquote class="flex-grow text-base leading-relaxed mb-6" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif; line-height: 1.8;">
-            3歳の娘が「What's this?」と自然に聞いてくるようになって、びっくりしました。体を動かしながら学ぶから、遊びの延長なんです。
-          </blockquote>
-          <cite class="text-sm not-italic border-t pt-4" style="color: #718096; font-family: 'Noto Sans JP', sans-serif; border-color: #EDF2F7;">
-            — 佐藤様<br />
-            <span class="text-xs">お子様: 3歳 · Starters クラス</span>
-          </cite>
-        </div>
-
-        <!-- Testimonial 3 -->
-        <div class="flex flex-col rounded-xl p-6" style="background: #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-          <div class="text-3xl mb-4" style="color: #FFD166;">❝</div>
-          <blockquote class="flex-grow text-base leading-relaxed mb-6" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif; line-height: 1.8;">
-            マットティーチャーが大好きで、毎週のレッスンを楽しみにしています。机に座らないから、飽きずに続けられるんだと思います。
-          </blockquote>
-          <cite class="text-sm not-italic border-t pt-4" style="color: #718096; font-family: 'Noto Sans JP', sans-serif; border-color: #EDF2F7;">
-            — 鈴木様<br />
-            <span class="text-xs">お子様: 5歳 · Kids クラス</span>
-          </cite>
-        </div>
-      </div>
-
-      <!-- Stat -->
-      <div class="text-center py-8">
-        <div class="text-6xl font-bold mb-3" style="color: #FF8A5B; font-family: 'Poppins', sans-serif;">80%</div>
-        <p class="text-base leading-relaxed" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif; line-height: 1.8;">
-          体験レッスンを受けたご家族の80%が入会されています。<br />
-          無料体験レッスンで、お子さんの顔を見てください。
+        <p class="mt-8 text-sm" style="color: var(--skippy-muted);">
+          都島区内代町 ｜ 野江内代駅から徒歩圏 ｜ 京橋・都島・城東からも通えます
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Section 4: Transformation -->
-  <section class="py-20 px-6" style="background-color: #4A90E2;">
-    <div class="max-w-2xl mx-auto text-center">
-      <p class="text-xl md:text-3xl font-bold leading-relaxed mb-6" style="color: #ffffff; font-family: 'Noto Sans JP', sans-serif; line-height: 1.6;">
-        「私が英語で苦労したのは、<br />話す練習をしなかったから。<br />この子には、そうなってほしくない。」
+  <!-- ============ LIGHTBULB 1: THE PROBLEM ============ -->
+  <section class="section-cream py-16 md:py-24 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-2xl md:text-4xl font-extrabold mb-6" style="line-height: 1.5;">
+        何年も英語を習ったのに、<br class="md:hidden" />ひとことも<span class="marker-magenta">話せない</span>。
+      </h2>
+      <p class="text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10" style="line-height: 2;">
+        多くの日本の英語教育は「読む・書く」から始まります。でも、子どもが日本語を覚えたとき、最初にしたのは「話すこと」でした。順番が逆なんです。
       </p>
-      <p class="text-base leading-relaxed" style="color: rgba(255,255,255,0.9); font-family: 'Noto Sans JP', sans-serif; line-height: 1.8;">
-        スキッピーで今始めれば、英語が「外国語」じゃなくて、自然な言葉になる。<br />
-        4〜8週間で、お子さんが英語を自然に使い始めます。
-      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 text-left">
+        <div class="skippy-card">
+          <p class="font-bold mb-2">読み書きが先にくる</p>
+          <p class="text-sm leading-relaxed" style="color: var(--skippy-muted); line-height: 1.9;">文字とテストから入ると、英語は「教科」になります。使うことばにはなりません。</p>
+        </div>
+        <div class="skippy-card">
+          <p class="font-bold mb-2">話す時間がほぼゼロ</p>
+          <p class="text-sm leading-relaxed" style="color: var(--skippy-muted); line-height: 1.9;">大人数のクラスでは、一人が英語を口にする時間は1回の授業でほんの数十秒です。</p>
+        </div>
+        <div class="skippy-card">
+          <p class="font-bold mb-2">まちがいが怖くなる</p>
+          <p class="text-sm leading-relaxed" style="color: var(--skippy-muted); line-height: 1.9;">正解・不正解で評価されるうちに、声に出すこと自体が怖くなってしまいます。</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Section 5: Final CTA -->
-  <section class="py-20 px-6" style="background-color: #FDFBF7;">
-    <div class="max-w-2xl mx-auto text-center">
-      <h2 class="text-2xl md:text-4xl font-bold mb-4" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif;">
-        無料体験レッスン、受付中
-      </h2>
-      <p class="text-base mb-8 leading-relaxed" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif; line-height: 1.8;">
-        入会のプレッシャーは一切ありません。<br />
-        お子さんが楽しいかどうか、一緒に確かめましょう。
+  <!-- ============ LIGHTBULB 2: THE METHOD ============ -->
+  <section class="py-16 md:py-24 px-6 bg-white">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="bubble-eyebrow mb-4">スキッピーのやり方</span>
+        <h2 class="text-2xl md:text-4xl font-extrabold mt-4">話す → 読む → 書く の順番で</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Step 1 -->
+        <div class="skippy-card relative">
+          <div class="w-12 h-12 rounded-full flex items-center justify-center font-heading font-extrabold text-lg mb-4" style="background: var(--skippy-cyan); color: var(--skippy-navy);">1</div>
+          <h3 class="text-lg font-extrabold mb-3">まず、話す</h3>
+          <p class="text-sm leading-relaxed" style="line-height: 1.95;">
+            歌って、動いて、声に出す。机に座りっぱなしのレッスンではありません。Genki Englishのカリキュラムで、体を動かしながら「使える英語」から覚えます。
+          </p>
+        </div>
+        <!-- Step 2 -->
+        <div class="skippy-card relative">
+          <div class="w-12 h-12 rounded-full flex items-center justify-center font-heading font-extrabold text-lg mb-4" style="background: var(--skippy-cyan); color: var(--skippy-navy);">2</div>
+          <h3 class="text-lg font-extrabold mb-3">話せたら、読む</h3>
+          <p class="text-sm leading-relaxed" style="line-height: 1.95;">
+            自分の口から出てくることばは、読めるようになるのも速い。フォニックスで、知っていることばと文字がつながります。
+          </p>
+        </div>
+        <!-- Step 3 -->
+        <div class="skippy-card relative">
+          <div class="w-12 h-12 rounded-full flex items-center justify-center font-heading font-extrabold text-lg mb-4" style="background: var(--skippy-cyan); color: var(--skippy-navy);">3</div>
+          <h3 class="text-lg font-extrabold mb-3">読めたら、書く</h3>
+          <p class="text-sm leading-relaxed" style="line-height: 1.95;">
+            伝えたいことがあって、読める子は、書くことも自然に始められます。順番を守るから、無理なく積み上がります。
+          </p>
+        </div>
+      </div>
+
+      <!-- real proof line -->
+      <div class="mt-10 max-w-3xl mx-auto rounded-2xl p-6 md:p-8 text-center" style="background: var(--skippy-cyan-soft);">
+        <p class="text-base md:text-lg font-bold leading-relaxed" style="line-height: 1.9;">
+          この順番で学んできたクォッカクラスの子どもたち（3〜5年目）は、<br class="hidden md:inline" />いま<span class="marker">「読む」段階</span>に進んでいます。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LIGHTBULB 3: THE TEACHER + REAL NUMBERS ============ -->
+  <section class="section-cream py-16 md:py-24 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        <!-- TODO: replace with a real photo of Matt teaching -->
+        <div class="photo-slot" style="min-height: 320px;">
+          📷 マット先生のレッスン写真がここに入ります
+        </div>
+        <div>
+          <span class="bubble-eyebrow mb-4">教えるのは、ずっと同じ先生</span>
+          <h2 class="text-2xl md:text-3xl font-extrabold mt-4 mb-5" style="line-height: 1.5;">
+            マット先生（Cartwright Matt）
+          </h2>
+          <p class="text-base leading-relaxed mb-4" style="line-height: 2;">
+            オーストラリア出身。{yearsInJapan}年前に来日し、2018年に内代町でスキッピー英会話を開きました。自身も大阪で子育て中の父親で、わが子をバイリンガルに育てている真っ最中です。
+          </p>
+          <p class="text-base leading-relaxed mb-6" style="line-height: 2;">
+            講師が入れ替わる教室ではありません。開校から{yearsRunning}年、全クラスをマット先生が担当しています。生徒全員の名前と、好きなものを知っています。
+          </p>
+          <a href="/about" class="font-bold" style="color: var(--skippy-magenta);">マット先生とスキッピーの物語 →</a>
+        </div>
+      </div>
+
+      <!-- numbers strip: all real -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-14">
+        <div class="skippy-card text-center py-6">
+          <div class="font-heading font-extrabold text-3xl mb-1" style="color: var(--skippy-magenta);">2018</div>
+          <p class="text-xs font-bold" style="color: var(--skippy-muted);">開校（{yearsRunning}年目）</p>
+        </div>
+        <div class="skippy-card text-center py-6">
+          <div class="font-heading font-extrabold text-3xl mb-1" style="color: var(--skippy-magenta);">約30</div>
+          <p class="text-xs font-bold" style="color: var(--skippy-muted);">通ってくれている家族</p>
+        </div>
+        <div class="skippy-card text-center py-6">
+          <div class="font-heading font-extrabold text-3xl mb-1" style="color: var(--skippy-magenta);">約8割</div>
+          <p class="text-xs font-bold" style="color: var(--skippy-muted);">体験したご家族の入会率</p>
+        </div>
+        <div class="skippy-card text-center py-6">
+          <div class="font-heading font-extrabold text-3xl mb-1" style="color: var(--skippy-magenta);">1人</div>
+          <p class="text-xs font-bold" style="color: var(--skippy-muted);">先生は変わりません</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LIGHTBULB 4: PRICING ============ -->
+  <section id="pricing" class="py-16 md:py-24 px-6 bg-white">
+    <div class="max-w-3xl mx-auto text-center">
+      <span class="bubble-eyebrow mb-4">料金</span>
+      <h2 class="text-2xl md:text-4xl font-extrabold mt-4 mb-4">料金は、このページに全部書いてあります。</h2>
+      <p class="text-base leading-relaxed mb-10 max-w-xl mx-auto" style="color: var(--skippy-muted); line-height: 2;">
+        「お問い合わせください」とは言いません。かかるお金はこれだけです。
       </p>
 
-      <a href={LINE_OA_URL} target="_blank" rel="noopener noreferrer"
-        class="btn-line text-lg font-semibold mb-6 block"
-        style="max-width: 400px; margin: 0 auto 24px;">
+      <div class="skippy-card md:p-10 text-left" style="border: 2px solid var(--skippy-cyan);">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-2 mb-6">
+          <div>
+            <p class="text-sm font-bold mb-1" style="color: var(--skippy-muted);">月謝（月4回レッスン）</p>
+            <p class="font-heading font-extrabold text-5xl" style="color: var(--skippy-navy);">¥11,000<span class="text-lg font-bold" style="color: var(--skippy-muted);">／月</span></p>
+          </div>
+          <p class="text-sm font-bold" style="color: var(--skippy-magenta);">宿題アプリの利用料も込み</p>
+        </div>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm font-bold">
+          <li class="flex items-start gap-2"><span style="color: var(--skippy-magenta);">✓</span> レッスン45分 × 月4回</li>
+          <li class="flex items-start gap-2"><span style="color: var(--skippy-magenta);">✓</span> レッスン前後15分の英語フリータイム</li>
+          <li class="flex items-start gap-2"><span style="color: var(--skippy-magenta);">✓</span> 入会金 0円</li>
+          <li class="flex items-start gap-2"><span style="color: var(--skippy-magenta);">✓</span> 教材費 0円</li>
+        </ul>
+        <p class="mt-6 text-xs leading-relaxed" style="color: var(--skippy-muted); line-height: 1.9;">
+          フリータイムはレッスンの前後に教室で自由に過ごせる時間です。早めに来て、英語で遊んで帰れます。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLASSES QUICK REFERENCE ============ -->
+  <section class="section-cyan-soft py-16 md:py-24 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="bubble-eyebrow mb-4">クラス</span>
+        <h2 class="text-2xl md:text-4xl font-extrabold mt-4">オーストラリアの動物の名前がついた、4つのクラス</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <!-- Wombat: recruiting -->
+        <div class="skippy-card relative" style="border: 2px solid var(--skippy-magenta);">
+          <span class="absolute -top-3 left-6 rounded-full px-3 py-1 text-xs font-extrabold text-white" style="background: var(--skippy-magenta);">いま募集中</span>
+          <h3 class="text-xl font-extrabold mb-1 mt-2">Wombat ウォンバット</h3>
+          <p class="text-sm font-bold mb-3" style="color: var(--skippy-magenta);">4〜7歳 ｜ 水 18:00 ／ 土 11:15</p>
+          <p class="text-sm leading-relaxed" style="color: var(--skippy-muted); line-height: 1.9;">
+            この4月にスタートした一番新しいクラス。今から入っても、みんなとほぼ同じスタートラインです。各クラス残り3席ほど。
+          </p>
+        </div>
+        <!-- Bilby -->
+        <div class="skippy-card">
+          <h3 class="text-xl font-extrabold mb-1">Bilby ビルビー</h3>
+          <p class="text-sm font-bold mb-3" style="color: var(--skippy-muted);">金 16:30 ／ 土 10:15</p>
+          <p class="text-sm leading-relaxed" style="color: var(--skippy-muted); line-height: 1.9;">
+            2024年ごろに始まったクラス。話せることばがどんどん増えている段階です。
+          </p>
+        </div>
+        <!-- Quokka -->
+        <div class="skippy-card">
+          <h3 class="text-xl font-extrabold mb-1">Quokka クォッカ</h3>
+          <p class="text-sm font-bold mb-3" style="color: var(--skippy-muted);">火 17:00 ／ 金 17:30</p>
+          <p class="text-sm leading-relaxed" style="color: var(--skippy-muted); line-height: 1.9;">
+            通って3〜5年目。話す力を土台に、いま「読む」段階に進んでいます。
+          </p>
+        </div>
+        <!-- Echidna -->
+        <div class="skippy-card">
+          <h3 class="text-xl font-extrabold mb-1">Echidna エキドナ</h3>
+          <p class="text-sm font-bold mb-3" style="color: var(--skippy-muted);">火 18:00（60分）</p>
+          <p class="text-sm leading-relaxed" style="color: var(--skippy-muted); line-height: 1.9;">
+            英会話 × 英検の1時間クラス。話す練習と英検対策を両方やります。読める子が対象です。
+          </p>
+        </div>
+      </div>
+
+      <div class="text-center mt-10">
+        <a href="/classes" class="btn-ghost-light" style="background: #ffffff;">クラス・スケジュールをくわしく見る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LETTERS (coming) ============ -->
+  <section class="py-16 md:py-20 px-6 bg-white">
+    <div class="max-w-3xl mx-auto text-center">
+      <span class="bubble-eyebrow mb-4">教え子からの手紙</span>
+      <h2 class="text-2xl md:text-3xl font-extrabold mt-4 mb-4">卒業していった子たちの、本物のことば</h2>
+      <p class="text-base leading-relaxed max-w-xl mx-auto" style="color: var(--skippy-muted); line-height: 2;">
+        スキッピーを巣立った生徒たちからもらった手紙を、ただいま準備中です。作った声ではなく、本物だけをここに載せます。
+      </p>
+      <!-- TODO: student letter images + transcriptions go here -->
+    </div>
+  </section>
+
+  <!-- ============ ANNOUNCEMENTS ============ -->
+  <section class="section-cream py-16 md:py-20 px-6">
+    <div class="max-w-3xl mx-auto">
+      <div class="flex items-end justify-between mb-8">
+        <h2 class="text-2xl md:text-3xl font-extrabold">お知らせ</h2>
+        <a href="/news" class="text-sm font-bold" style="color: var(--skippy-magenta);">すべて見る →</a>
+      </div>
+      <ul class="space-y-4">
+        {announcements.map((a) => (
+          <li class="skippy-card !py-5 flex flex-col md:flex-row md:items-center gap-1 md:gap-6">
+            <time class="text-xs font-bold shrink-0" style="color: var(--skippy-muted);">{fmt(a.data.date)}</time>
+            <a href="/news" class="font-bold hover:underline" style="color: var(--skippy-navy);">{a.data.title}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ LIGHTBULB 5: FINAL CTA ============ -->
+  <section class="section-navy py-16 md:py-24 px-6">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-2xl md:text-4xl font-extrabold mb-5 text-white" style="color: #ffffff; line-height: 1.5;">
+        無料体験は、一年中いつでも。
+      </h2>
+      <p class="text-base leading-relaxed mb-3" style="color: rgb(255 255 255 / 85%); line-height: 2;">
+        入会のおすすめは、新しいコホートが始まる<span class="font-bold" style="color: var(--skippy-cyan);">4月</span>。でも、席があれば途中からでも入れます。
+      </p>
+      <p class="text-base leading-relaxed mb-10" style="color: rgb(255 255 255 / 85%); line-height: 2;">
+        しつこい勧誘はしません。お子さんが楽しめるかどうか、まず一度見に来てください。
+      </p>
+      <a href={LINE_OA_URL} target="_blank" rel="noopener noreferrer" class="btn-line text-lg" style="max-width: 400px; margin: 0 auto;">
         <svg width="24" height="24" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M38 20.3C38 13.1 31 7.3 22.4 7.3C13.8 7.3 6.8 13.1 6.8 20.3C6.8 26.7 12.2 32.1 19.7 33.1C20.2 33.2 20.9 33.4 21.1 33.8C21.3 34.2 21.2 34.8 21.1 35.2L20.7 37.4C20.6 37.8 20.3 39 22.4 38.1C24.5 37.2 33.2 31.8 37.1 27.3C38.9 25.3 38 22.5 38 20.3Z" fill="white"/>
         </svg>
-        LINEで体験レッスンを予約する
+        LINEで無料体験を予約する
       </a>
-
-      <p class="text-sm" style="color: #718096; font-family: 'Noto Sans JP', sans-serif;">
-        🗺️ 都島区内代町 | 鶴橋・森ノ宮・京橋から自転車圏内
+      <p class="mt-8 text-sm" style="color: rgb(255 255 255 / 60%);">
+        大阪市都島区内代町2-2-23 ｜ <a href="/access" class="underline">アクセス・地図はこちら</a>
       </p>
-    </div>
-  </section>
-
-  <!-- Age groups quick reference -->
-  <section class="py-12 px-6" style="background-color: #EDF2F7;">
-    <div class="max-w-4xl mx-auto">
-      <h3 class="text-xl font-bold text-center mb-8" style="color: #4A90E2; font-family: 'Noto Sans JP', sans-serif;">
-        クラス紹介
-      </h3>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="bg-white rounded-lg p-6 text-center">
-          <div class="text-3xl mb-2">👶</div>
-          <h4 class="font-bold mb-1" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif;">プレKids</h4>
-          <p class="text-sm" style="color: #718096; font-family: 'Noto Sans JP', sans-serif;">2〜3歳 · 保護者同伴</p>
-        </div>
-        <div class="bg-white rounded-lg p-6 text-center">
-          <div class="text-3xl mb-2">🧒</div>
-          <h4 class="font-bold mb-1" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif;">Kidsクラス</h4>
-          <p class="text-sm" style="color: #718096; font-family: 'Noto Sans JP', sans-serif;">4〜5歳</p>
-        </div>
-        <div class="bg-white rounded-lg p-6 text-center">
-          <div class="text-3xl mb-2">👦</div>
-          <h4 class="font-bold mb-1" style="color: #2D3748; font-family: 'Noto Sans JP', sans-serif;">Juniorクラス</h4>
-          <p class="text-sm" style="color: #718096; font-family: 'Noto Sans JP', sans-serif;">6〜8歳</p>
-        </div>
-      </div>
-      <div class="text-center mt-6">
-        <a href="/classes" class="font-semibold" style="color: #4A90E2; font-family: 'Noto Sans JP', sans-serif;">
-          クラス詳細・スケジュールを見る →
-        </a>
-      </div>
     </div>
   </section>
 </Layout>
