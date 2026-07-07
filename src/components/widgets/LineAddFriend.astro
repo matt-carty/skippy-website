@@ -1,6 +1,7 @@
 ---
 import { LINE_OA_URL } from '~/navigation';
 
+<<<<<<< ours
 // LINE add-friend badge — floating bottom-right on all viewports.
 //
 // Priority order for the badge image:
@@ -30,49 +31,66 @@ const DEFAULT_BADGE = 'https://scdn.line-apps.com/n/line_add_friends/btn/ja.png'
         decoding="async"
       />
     </picture>
+=======
+// Floating LINE CTA — compact version of the site's own .btn-line language:
+// LINE green for instant recognition, but the pill shape, white ring,
+// navy shadow, and rounded heading font all match the rest of the site.
+---
+
+<div class="line-fab-wrap" role="complementary" aria-label="LINEで無料体験を予約">
+  <a href={LINE_OA_URL} target="_blank" rel="noopener noreferrer" class="line-fab">
+    <svg width="22" height="22" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M38 20.3C38 13.1 31 7.3 22.4 7.3C13.8 7.3 6.8 13.1 6.8 20.3C6.8 26.7 12.2 32.1 19.7 33.1C20.2 33.2 20.9 33.4 21.1 33.8C21.3 34.2 21.2 34.8 21.1 35.2L20.7 37.4C20.6 37.8 20.3 39 22.4 38.1C24.5 37.2 33.2 31.8 37.1 27.3C38.9 25.3 38 22.5 38 20.3Z" fill="white"/>
+    </svg>
+    <span>LINEで体験予約</span>
+>>>>>>> theirs
   </a>
 </div>
 
 <style>
-  .line-add-friend {
+  .line-fab-wrap {
     position: fixed;
     right: 16px;
     bottom: 16px;
     z-index: 50;
-    padding: 8px;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 6px 22px rgb(48 45 85 / 22%);
-    transition: transform 0.18s ease, box-shadow 0.18s ease;
   }
-  .line-add-friend:hover {
+  .line-fab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--skippy-line-green);
+    color: #ffffff;
+    font-family: var(--aw-font-heading);
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 1;
+    text-decoration: none;
+    padding: 13px 18px;
+    border-radius: 9999px;
+    border: 3px solid #ffffff;
+    box-shadow: 0 6px 22px rgb(48 45 85 / 28%);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+  }
+  .line-fab:hover {
+    background: #05b34c;
     transform: translateY(-2px);
-    box-shadow: 0 10px 28px rgb(48 45 85 / 30%);
-  }
-  .line-add-friend a {
-    display: block;
-    line-height: 0;
-  }
-  .line-add-friend img {
-    display: block;
-    height: 36px;
-    width: auto;
+    box-shadow: 0 10px 28px rgb(48 45 85 / 35%);
   }
   @media (min-width: 768px) {
-    .line-add-friend {
+    .line-fab-wrap {
       right: 24px;
       bottom: 24px;
-      padding: 10px;
     }
-    .line-add-friend img {
-      height: 44px;
+    .line-fab {
+      font-size: 15px;
+      padding: 15px 22px;
     }
   }
   @media (prefers-reduced-motion: reduce) {
-    .line-add-friend { transition: none; }
-    .line-add-friend:hover { transform: none; }
+    .line-fab { transition: none; }
+    .line-fab:hover { transform: none; }
   }
   @media print {
-    .line-add-friend { display: none; }
+    .line-fab-wrap { display: none; }
   }
 </style>

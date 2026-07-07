@@ -13,6 +13,28 @@ const announcements = (await getCollection('announcements', ({ data }) => !data.
 
 const fmt = (d: Date) => `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Skippy English School',
+  alternateName: 'スキッピー英会話',
+  description: '大阪市都島区内代町のこども英会話教室。まず話す、それから読む。月謝11,000円（入会金・教材費0円）、少人数クラス、無料体験は一年中受付。',
+  url: 'https://skippyenglish.school',
+  telephone: '+81-6-6167-9262',
+  email: 'hello@skippyenglish.school',
+  foundingDate: '2018',
+  priceRange: '¥11,000/月',
+  address: {
+    '@type': 'PostalAddress',
+    postalCode: '534-0013',
+    addressRegion: '大阪府',
+    addressLocality: '大阪市都島区',
+    streetAddress: '内代町2-2-23',
+    addressCountry: 'JP',
+  },
+  sameAs: ['https://www.instagram.com/skippyenglishschool/', 'https://lin.ee/EB9EgWJ'],
+};
+
 const metadata = {
   title: 'Skippy English School | まず話す英会話教室 — 内代町・都島区',
   description:
@@ -323,4 +345,6 @@ const metadata = {
       </p>
     </div>
   </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 </Layout>
