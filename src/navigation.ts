@@ -1,6 +1,6 @@
 import { getPermalink } from './utils/permalinks';
 
-const LINE_OA_URL = 'https://lin.ee/EB9EgWJ';
+const LINE_OA_URL = 'https://lin.ee/R2rbgoa';
 
 export const headerData = {
   links: [
@@ -49,9 +49,7 @@ export const footerData = {
       ],
     },
   ],
-  secondaryLinks: [
-    { text: 'プライバシーポリシー', href: getPermalink('/privacy') },
-  ],
+  secondaryLinks: [{ text: 'プライバシーポリシー', href: getPermalink('/privacy') }],
   socialLinks: [
     { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: 'https://www.instagram.com/skippyenglishschool/' },
     { ariaLabel: 'LINE', icon: 'tabler:brand-line', href: LINE_OA_URL },
