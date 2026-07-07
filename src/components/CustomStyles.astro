@@ -178,6 +178,32 @@ import '@fontsource-variable/inter';
     color: var(--skippy-magenta);
   }
 
+  /* ---- Header LINE button (compact, in the chrome) ---- */
+  .header-line-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--skippy-line-green);
+    color: #ffffff;
+    font-family: var(--aw-font-heading);
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1;
+    padding: 9px 14px;
+    border-radius: 9999px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.15s ease;
+  }
+  .header-line-btn:hover {
+    background: #05b34c;
+  }
+  .header-line-btn--lg {
+    font-size: 14px;
+    padding: 11px 18px;
+    gap: 8px;
+  }
+
   /* ---- Section rhythm ---- */
   .section-cream { background-color: var(--skippy-cream); }
   .section-cyan-soft { background-color: var(--skippy-cyan-soft); }

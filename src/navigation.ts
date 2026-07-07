@@ -24,6 +24,10 @@ export const headerData = {
       text: 'アクセス',
       href: getPermalink('/access'),
     },
+    {
+      text: '体験レッスン',
+      href: getPermalink('/trial'),
+    },
   ],
   actions: [
     {

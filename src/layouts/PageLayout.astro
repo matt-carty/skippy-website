@@ -2,7 +2,6 @@
 import Layout from '~/layouts/Layout.astro';
 import Header from '~/components/widgets/Header.astro';
 import SkippyFooter from '~/components/widgets/SkippyFooter.astro';
-import LineAddFriend from '~/components/widgets/LineAddFriend.astro';
 
 import { headerData } from '~/navigation';
 
@@ -25,5 +24,4 @@ const { metadata } = Astro.props;
   <slot name="footer">
     <SkippyFooter />
   </slot>
-  <LineAddFriend />
 </Layout>
