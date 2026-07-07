@@ -71,9 +71,9 @@ export interface AppBlogConfig {
 }
 export interface AnalyticsConfig {
   vendors: {
-    googleAnalytics: {
-      id?: string;
-      partytown?: boolean;
+    plausible?: {
+      domain?: string;
+      src?: string;
     };
   };
 }
@@ -186,9 +186,9 @@ const getUI = (config: Config) => {
 const getAnalytics = (config: Config) => {
   const _default = {
     vendors: {
-      googleAnalytics: {
-        id: undefined,
-        partytown: true,
+      plausible: {
+        domain: undefined,
+        src: undefined,
       },
     },
   };

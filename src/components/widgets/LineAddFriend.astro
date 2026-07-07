@@ -1,0 +1,80 @@
+---
+import { LINE_OA_URL } from '~/navigation';
+
+// LINE add-friend badge — floating bottom-right on all viewports.
+//
+// Priority order for the badge image:
+//   1. /line-add-friend.png (or .svg) if it exists in `public/` (yours from LINE OA)
+//   2. LINE's official add-friend button image (ja) as the fallback default
+//
+// To use your custom badge from LINE OA admin:
+//   - Save the image from LINE dashboard as `public/line-add-friend.png`
+//   - Redeploy. It'll appear automatically.
+//
+// LINE brand guidelines: the badge/button must be recognisable — do not
+// re-tint or crop. This component keeps it as-is inside a subtle white pill
+// so it stays legible over any page background.
+
+const CUSTOM_BADGE = '/line-add-friend.png';
+const DEFAULT_BADGE = 'https://scdn.line-apps.com/n/line_add_friends/btn/ja.png';
+---
+
+<div class="line-add-friend" role="complementary" aria-label="LINEで友だち追加">
+  <a href={LINE_OA_URL} target="_blank" rel="noopener noreferrer" aria-label="LINEで無料体験を予約 / 友だち追加">
+    <picture>
+      <source srcset={CUSTOM_BADGE} />
+      <img
+        src={DEFAULT_BADGE}
+        alt="LINEで友だち追加"
+        height="36"
+        width="116"
+        loading="lazy"
+        decoding="async"
+      />
+    </picture>
+  </a>
+</div>
+
+<style>
+  .line-add-friend {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 50;
+    padding: 8px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 22px rgb(48 45 85 / 22%);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .line-add-friend:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgb(48 45 85 / 30%);
+  }
+  .line-add-friend a {
+    display: block;
+    line-height: 0;
+  }
+  .line-add-friend img {
+    display: block;
+    height: 36px;
+    width: auto;
+  }
+  @media (min-width: 768px) {
+    .line-add-friend {
+      right: 24px;
+      bottom: 24px;
+      padding: 10px;
+    }
+    .line-add-friend img {
+      height: 44px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .line-add-friend { transition: none; }
+    .line-add-friend:hover { transform: none; }
+  }
+  @media print {
+    .line-add-friend { display: none; }
+  }
+</style>
