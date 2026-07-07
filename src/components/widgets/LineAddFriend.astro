@@ -15,14 +15,12 @@ import { LINE_OA_URL } from '~/navigation';
 // re-tint or crop. This component keeps it as-is inside a subtle white pill
 // so it stays legible over any page background.
 
-const CUSTOM_BADGE = '/line-add-friend.png';
 const DEFAULT_BADGE = 'https://scdn.line-apps.com/n/line_add_friends/btn/ja.png';
 ---
 
 <div class="line-add-friend" role="complementary" aria-label="LINEで友だち追加">
   <a href={LINE_OA_URL} target="_blank" rel="noopener noreferrer" aria-label="LINEで無料体験を予約 / 友だち追加">
     <picture>
-      <source srcset={CUSTOM_BADGE} />
       <img
         src={DEFAULT_BADGE}
         alt="LINEで友だち追加"
