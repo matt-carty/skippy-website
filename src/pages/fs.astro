@@ -1,0 +1,97 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { LINE_OA_URL } from '~/navigation';
+
+const year = new Date().getFullYear();
+
+// QR-only landing page for the sign in front of the school.
+// Not linked from navigation, not indexed — its traffic IS the measurement.
+const metadata = {
+  title: 'ようこそ！ | Skippy English School',
+  description: 'スキッピー英会話の前で、QRコードを読み取ってくださった方へ。',
+  robots: { index: false, follow: true },
+};
+
+const miniSchedule = [
+  { day: '火', times: '17:00 / 18:00' },
+  { day: '水', times: '18:00' },
+  { day: '金', times: '16:30 / 17:30' },
+  { day: '土', times: '10:15 / 11:15' },
+];
+---
+
+<Layout metadata={metadata}>
+  <!-- Context-aware greeting: they are literally standing outside -->
+  <section class="relative overflow-hidden bg-white">
+    <div class="pointer-events-none absolute -top-12 -right-12 w-48 h-48 rounded-full" style="background: var(--skippy-cyan-soft);" aria-hidden="true"></div>
+    <div class="relative z-10 max-w-md mx-auto px-6 pt-12 pb-10 text-center">
+      <span class="bubble-eyebrow">いま、教室の前ですか？</span>
+      <h1 class="text-3xl font-extrabold mt-6 mb-4" style="line-height: 1.45;">
+        ようこそ、<br />スキッピー英会話へ。
+      </h1>
+      <p class="text-base leading-relaxed" style="line-height: 2;">
+        足を止めてくださって、ありがとうございます。<br />
+        ここは、<span class="marker">まず話す</span>ことから英語を始める、こども英会話教室です。
+      </p>
+    </div>
+  </section>
+
+  <!-- The three questions a passerby actually has -->
+  <section class="section-cream py-10 px-6">
+    <div class="max-w-md mx-auto space-y-4">
+      <div class="skippy-card !py-5">
+        <p class="text-xs font-extrabold mb-1" style="color: var(--skippy-magenta);">Q. いくらかかる？</p>
+        <p class="font-heading font-extrabold text-2xl">¥11,000<span class="text-sm font-bold" style="color: var(--skippy-muted);">／月（月4回・45分）</span></p>
+        <p class="text-xs mt-1 font-bold" style="color: var(--skippy-muted);">入会金0円・教材費0円・宿題アプリ込み。これで全部です。</p>
+      </div>
+      <div class="skippy-card !py-5">
+        <p class="text-xs font-extrabold mb-1" style="color: var(--skippy-magenta);">Q. 誰が教えている？</p>
+        <p class="font-bold text-sm leading-relaxed" style="line-height: 1.9;">オーストラリア出身のマット先生。2018年の開校から、全クラスをひとりで教えています。</p>
+      </div>
+      <div class="skippy-card !py-5">
+        <p class="text-xs font-extrabold mb-1" style="color: var(--skippy-magenta);">Q. いま入れる？</p>
+        <p class="font-bold text-sm leading-relaxed" style="line-height: 1.9;">4〜7歳のウォンバットクラスが募集中です（水18:00・土11:15、残り各3席／{year}年7月現在）。ほかの年齢のお子さんも、まず無料体験でご相談を。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- One action -->
+  <section class="py-10 px-6 bg-white">
+    <div class="max-w-md mx-auto text-center">
+      <p class="font-bold mb-5 text-base" style="line-height: 1.9;">無料体験は一年中、いつでも。<br />日程の相談は、LINEが早いです。</p>
+      <a href={LINE_OA_URL} target="_blank" rel="noopener noreferrer" class="btn-line text-lg w-full">
+        <svg width="24" height="24" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M38 20.3C38 13.1 31 7.3 22.4 7.3C13.8 7.3 6.8 13.1 6.8 20.3C6.8 26.7 12.2 32.1 19.7 33.1C20.2 33.2 20.9 33.4 21.1 33.8C21.3 34.2 21.2 34.8 21.1 35.2L20.7 37.4C20.6 37.8 20.3 39 22.4 38.1C24.5 37.2 33.2 31.8 37.1 27.3C38.9 25.3 38 22.5 38 20.3Z" fill="white"/>
+        </svg>
+        LINEで無料体験を予約する
+      </a>
+      <p class="mt-4 text-xs" style="color: var(--skippy-muted);">しつこい勧誘はしません。体験したご家族の約8割が入会しています。</p>
+    </div>
+  </section>
+
+  <!-- When the school is alive -->
+  <section class="section-cyan-soft py-10 px-6">
+    <div class="max-w-md mx-auto text-center">
+      <h2 class="text-lg font-extrabold mb-4">レッスンをやっている時間</h2>
+      <div class="grid grid-cols-4 gap-2">
+        {miniSchedule.map((d) => (
+          <div class="rounded-xl bg-white py-3 px-1">
+            <p class="font-heading font-extrabold" style="color: var(--skippy-magenta);">{d.day}</p>
+            <p class="text-xs font-bold mt-1" style="color: var(--skippy-navy);">{d.times}</p>
+          </div>
+        ))}
+      </div>
+      <p class="text-xs mt-4 leading-relaxed" style="color: var(--skippy-muted); line-height: 1.9;">
+        この時間は、中で子どもたちが英語を話しています。見学のご希望もLINEでどうぞ。
+      </p>
+    </div>
+  </section>
+
+  <!-- Deeper links -->
+  <section class="py-10 px-6 bg-white">
+    <div class="max-w-md mx-auto flex flex-col gap-3">
+      <a href="/" class="btn-ghost-light w-full">ホームページをゆっくり見る</a>
+      <a href="/classes" class="btn-ghost-light w-full">クラス・スケジュールの詳細</a>
+    </div>
+  </section>
+</Layout>
