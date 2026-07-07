@@ -1,37 +1,6 @@
 ---
 import { LINE_OA_URL } from '~/navigation';
 
-<<<<<<< ours
-// LINE add-friend badge — floating bottom-right on all viewports.
-//
-// Priority order for the badge image:
-//   1. /line-add-friend.png (or .svg) if it exists in `public/` (yours from LINE OA)
-//   2. LINE's official add-friend button image (ja) as the fallback default
-//
-// To use your custom badge from LINE OA admin:
-//   - Save the image from LINE dashboard as `public/line-add-friend.png`
-//   - Redeploy. It'll appear automatically.
-//
-// LINE brand guidelines: the badge/button must be recognisable — do not
-// re-tint or crop. This component keeps it as-is inside a subtle white pill
-// so it stays legible over any page background.
-
-const DEFAULT_BADGE = 'https://scdn.line-apps.com/n/line_add_friends/btn/ja.png';
----
-
-<div class="line-add-friend" role="complementary" aria-label="LINEで友だち追加">
-  <a href={LINE_OA_URL} target="_blank" rel="noopener noreferrer" aria-label="LINEで無料体験を予約 / 友だち追加">
-    <picture>
-      <img
-        src={DEFAULT_BADGE}
-        alt="LINEで友だち追加"
-        height="36"
-        width="116"
-        loading="lazy"
-        decoding="async"
-      />
-    </picture>
-=======
 // Floating LINE CTA — compact version of the site's own .btn-line language:
 // LINE green for instant recognition, but the pill shape, white ring,
 // navy shadow, and rounded heading font all match the rest of the site.
@@ -43,7 +12,6 @@ const DEFAULT_BADGE = 'https://scdn.line-apps.com/n/line_add_friends/btn/ja.png'
       <path d="M38 20.3C38 13.1 31 7.3 22.4 7.3C13.8 7.3 6.8 13.1 6.8 20.3C6.8 26.7 12.2 32.1 19.7 33.1C20.2 33.2 20.9 33.4 21.1 33.8C21.3 34.2 21.2 34.8 21.1 35.2L20.7 37.4C20.6 37.8 20.3 39 22.4 38.1C24.5 37.2 33.2 31.8 37.1 27.3C38.9 25.3 38 22.5 38 20.3Z" fill="white"/>
     </svg>
     <span>LINEで体験予約</span>
->>>>>>> theirs
   </a>
 </div>
 
