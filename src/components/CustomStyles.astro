@@ -108,6 +108,33 @@ import '@fontsource-variable/inter';
     transform: rotate(45deg) skew(10deg, 10deg);
   }
 
+  /* ---- Announcement speech bubble (bigger sibling of .bubble-eyebrow) ----
+   * Rounded rectangle, NOT a pill — so it never reads as a button.
+   * Cream + navy = warm notice; cyan/magenta stay reserved for their jobs.
+   * Tail points down-left, toward the CTA that follows it. */
+  .bubble-notice {
+    display: inline-block;
+    position: relative;
+    color: var(--skippy-navy);
+    background: var(--skippy-cream);
+    border: 2px solid var(--skippy-navy);
+    border-radius: 16px;
+    padding: 12px 20px;
+    line-height: 1.7;
+  }
+  .bubble-notice::after {
+    content: '';
+    position: absolute;
+    left: 28px;
+    bottom: -9px;
+    width: 14px;
+    height: 14px;
+    background: var(--skippy-cream);
+    border-right: 2px solid var(--skippy-navy);
+    border-bottom: 2px solid var(--skippy-navy);
+    transform: rotate(45deg) skew(10deg, 10deg);
+  }
+
   /* ---- LINE CTA (green stays green — users know what LINE looks like) ---- */
   .btn-line {
     display: inline-flex;
