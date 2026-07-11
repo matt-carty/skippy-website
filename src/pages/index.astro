@@ -4,6 +4,9 @@ import { LINE_OA_URL } from '~/navigation';
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import mattTeachingPhoto from '~/assets/images/matt-teaching.jpg';
+import lessonPhoto1 from '~/assets/images/lesson-1.jpg';
+import lessonPhoto2 from '~/assets/images/lesson-2.jpg';
+import lessonPhoto3 from '~/assets/images/lesson-3.jpg';
 
 const year = new Date().getFullYear();
 const yearsInJapan = year - 2012;
@@ -213,11 +216,10 @@ const metadata = {
           >に進んでいます。
         </p>
       </div>
-      <!-- TODO(Matt): swap these three slots for real photos/video stills -->
       <div class="grid grid-cols-3 gap-3 md:gap-4 mt-8 max-w-3xl mx-auto">
-        <div class="photo-slot" style="min-height: 120px; font-size: 12px;">📷 レッスン中</div>
-        <div class="photo-slot" style="min-height: 120px; font-size: 12px;">📷 子ども同士の会話</div>
-        <div class="photo-slot" style="min-height: 120px; font-size: 12px;">📷 フリータイム</div>
+        <Image src={lessonPhoto1} alt="レッスン中" class="w-full h-full rounded-2xl object-cover" style="min-height: 120px;" />
+        <Image src={lessonPhoto2} alt="子ども同士の会話" class="w-full h-full rounded-2xl object-cover" style="min-height: 120px;" />
+        <Image src={lessonPhoto3} alt="フリータイム" class="w-full h-full rounded-2xl object-cover" style="min-height: 120px;" />
       </div>
     </div>
   </section>

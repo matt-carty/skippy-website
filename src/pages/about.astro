@@ -3,6 +3,8 @@ import Layout from '~/layouts/PageLayout.astro';
 import { LINE_OA_URL } from '~/navigation';
 import { Image } from 'astro:assets';
 import mattFamilyPhoto from '~/assets/images/matt-family-park-for-website.jpg';
+import halloweenPhoto from '~/assets/images/halloween-lesson.jpg';
+import christmasPhoto from '~/assets/images/christmas-lesson.jpg';
 
 const year = new Date().getFullYear();
 const yearsInJapan = year - 2012;
@@ -81,10 +83,9 @@ const metadata = {
       <p class="text-base leading-relaxed mb-8" style="line-height: 2.05;">
         毎年のハロウィンパーティーとクリスマスパーティーは、生徒がお友だちを連れてきてOKの日。スキッピーがどんな場所か、レッスンを申し込む前に、遊びながら見てもらえます。
       </p>
-      <!-- TODO: real event photos go here -->
       <div class="grid grid-cols-2 gap-4">
-        <div class="photo-slot" style="min-height: 160px;">📷 ハロウィンの写真</div>
-        <div class="photo-slot" style="min-height: 160px;">📷 クリスマスの写真</div>
+        <Image src={halloweenPhoto} alt="ハロウィンパーティーの様子" class="w-full h-full rounded-2xl object-cover" style="min-height: 160px;" />
+        <Image src={christmasPhoto} alt="クリスマスパーティーの様子" class="w-full h-full rounded-2xl object-cover" style="min-height: 160px;" />
       </div>
     </div>
   </section>
