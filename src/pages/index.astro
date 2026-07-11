@@ -1,7 +1,9 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import { LINE_OA_URL } from '~/navigation';
+import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
+import mattTeachingPhoto from '~/assets/images/matt-teaching.jpg';
 
 const year = new Date().getFullYear();
 const yearsInJapan = year - 2012;
@@ -11,14 +13,16 @@ const announcements = (await getCollection('announcements', ({ data }) => !data.
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
 
-const fmt = (d: Date) => `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
+const fmt = (d: Date) =>
+  `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: 'Skippy English School',
   alternateName: 'スキッピー英会話',
-  description: '大阪市都島区内代町のこども英会話教室。まず話す、それから読む。月謝11,000円（入会金・教材費0円）、少人数クラス、無料体験は一年中受付。',
+  description:
+    '大阪市都島区内代町のこども英会話教室。まず話す、それから読む。月謝11,000円（入会金・教材費0円）、少人数クラス、無料体験は一年中受付。',
   url: 'https://skippyenglish.school',
   telephone: '+81-6-6167-9262',
   email: 'hello@skippyenglish.school',
@@ -47,8 +51,18 @@ const metadata = {
   <!-- ============ HERO ============ -->
   <section class="relative overflow-hidden bg-white">
     <!-- decorative bubbles -->
-    <div class="pointer-events-none absolute -top-16 -right-16 w-64 h-64 rounded-full" style="background: var(--skippy-cyan-soft);" aria-hidden="true"></div>
-    <div class="pointer-events-none absolute top-40 -left-24 w-48 h-48 rounded-full" style="background: rgb(255 237 218 / 70%);" aria-hidden="true"></div>
+    <div
+      class="pointer-events-none absolute -top-16 -right-16 w-64 h-64 rounded-full"
+      style="background: var(--skippy-cyan-soft);"
+      aria-hidden="true"
+    >
+    </div>
+    <div
+      class="pointer-events-none absolute top-40 -left-24 w-48 h-48 rounded-full"
+      style="background: rgb(255 237 218 / 70%);"
+      aria-hidden="true"
+    >
+    </div>
 
     <div class="relative z-10 max-w-5xl mx-auto px-6 pt-16 pb-20 md:pt-24 md:pb-28">
       <div class="max-w-2xl">
@@ -71,8 +85,17 @@ const metadata = {
 
         <div class="flex flex-col sm:flex-row gap-4">
           <a href={LINE_OA_URL} target="_blank" rel="noopener noreferrer" class="btn-line text-lg">
-            <svg width="24" height="24" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M38 20.3C38 13.1 31 7.3 22.4 7.3C13.8 7.3 6.8 13.1 6.8 20.3C6.8 26.7 12.2 32.1 19.7 33.1C20.2 33.2 20.9 33.4 21.1 33.8C21.3 34.2 21.2 34.8 21.1 35.2L20.7 37.4C20.6 37.8 20.3 39 22.4 38.1C24.5 37.2 33.2 31.8 37.1 27.3C38.9 25.3 38 22.5 38 20.3Z" fill="white"/>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 44 44"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M38 20.3C38 13.1 31 7.3 22.4 7.3C13.8 7.3 6.8 13.1 6.8 20.3C6.8 26.7 12.2 32.1 19.7 33.1C20.2 33.2 20.9 33.4 21.1 33.8C21.3 34.2 21.2 34.8 21.1 35.2L20.7 37.4C20.6 37.8 20.3 39 22.4 38.1C24.5 37.2 33.2 31.8 37.1 27.3C38.9 25.3 38 22.5 38 20.3Z"
+                fill="white"></path>
             </svg>
             LINEで無料体験を予約する
           </a>
@@ -98,15 +121,21 @@ const metadata = {
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5 text-left">
         <div class="skippy-card">
           <p class="font-bold mb-2">読み書きが先にくる</p>
-          <p class="text-sm leading-relaxed" style="color: var(--skippy-muted); line-height: 1.9;">文字とテストから入ると、英語は「教科」になります。使うことばにはなりません。</p>
+          <p class="text-sm leading-relaxed" style="color: var(--skippy-muted); line-height: 1.9;">
+            文字とテストから入ると、英語は「教科」になります。使うことばにはなりません。
+          </p>
         </div>
         <div class="skippy-card">
           <p class="font-bold mb-2">話す時間が、ほんの数十秒</p>
-          <p class="text-sm leading-relaxed" style="color: var(--skippy-muted); line-height: 1.9;">大人数のクラスで、先生の質問に順番に答えるだけ。一人が英語を口にする時間は、1回の授業でほんの数十秒です。</p>
+          <p class="text-sm leading-relaxed" style="color: var(--skippy-muted); line-height: 1.9;">
+            大人数のクラスで、先生の質問に順番に答えるだけ。一人が英語を口にする時間は、1回の授業でほんの数十秒です。
+          </p>
         </div>
         <div class="skippy-card">
           <p class="font-bold mb-2">まちがいが怖くなる</p>
-          <p class="text-sm leading-relaxed" style="color: var(--skippy-muted); line-height: 1.9;">正解・不正解で評価されるうちに、声に出すこと自体が怖くなってしまいます。</p>
+          <p class="text-sm leading-relaxed" style="color: var(--skippy-muted); line-height: 1.9;">
+            正解・不正解で評価されるうちに、声に出すこと自体が怖くなってしまいます。
+          </p>
         </div>
       </div>
     </div>
@@ -123,15 +152,26 @@ const metadata = {
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Step 1 -->
         <div class="skippy-card relative">
-          <div class="w-12 h-12 rounded-full flex items-center justify-center font-heading font-extrabold text-lg mb-4" style="background: var(--skippy-cyan); color: var(--skippy-navy);">1</div>
+          <div
+            class="w-12 h-12 rounded-full flex items-center justify-center font-heading font-extrabold text-lg mb-4"
+            style="background: var(--skippy-cyan); color: var(--skippy-navy);"
+          >
+            1
+          </div>
           <h3 class="text-lg font-extrabold mb-3">まず、話す</h3>
           <p class="text-sm leading-relaxed" style="line-height: 1.95;">
-            歌って、動いて、声に出す。机に座りっぱなしのレッスンではありません。Genki Englishのカリキュラムで、体を動かしながら「使える英語」から覚えます。
+            歌って、動いて、声に出す。机に座りっぱなしのレッスンではありません。Genki
+            Englishのカリキュラムで、体を動かしながら「使える英語」から覚えます。
           </p>
         </div>
         <!-- Step 2 -->
         <div class="skippy-card relative">
-          <div class="w-12 h-12 rounded-full flex items-center justify-center font-heading font-extrabold text-lg mb-4" style="background: var(--skippy-cyan); color: var(--skippy-navy);">2</div>
+          <div
+            class="w-12 h-12 rounded-full flex items-center justify-center font-heading font-extrabold text-lg mb-4"
+            style="background: var(--skippy-cyan); color: var(--skippy-navy);"
+          >
+            2
+          </div>
           <h3 class="text-lg font-extrabold mb-3">話せたら、読む</h3>
           <p class="text-sm leading-relaxed" style="line-height: 1.95;">
             自分の口から出てくることばは、読めるようになるのも速い。フォニックスで、知っていることばと文字がつながります。
@@ -139,7 +179,12 @@ const metadata = {
         </div>
         <!-- Step 3 -->
         <div class="skippy-card relative">
-          <div class="w-12 h-12 rounded-full flex items-center justify-center font-heading font-extrabold text-lg mb-4" style="background: var(--skippy-cyan); color: var(--skippy-navy);">3</div>
+          <div
+            class="w-12 h-12 rounded-full flex items-center justify-center font-heading font-extrabold text-lg mb-4"
+            style="background: var(--skippy-cyan); color: var(--skippy-navy);"
+          >
+            3
+          </div>
           <h3 class="text-lg font-extrabold mb-3">読めたら、書く</h3>
           <p class="text-sm leading-relaxed" style="line-height: 1.95;">
             伝えたいことがあって、読める子は、書くことも自然に始められます。順番を守るから、無理なく積み上がります。
@@ -148,14 +193,24 @@ const metadata = {
       </div>
 
       <!-- peer-to-peer point -->
-      <p class="mt-10 text-center text-base md:text-lg font-bold leading-relaxed max-w-2xl mx-auto" style="line-height: 2;">
-        スキッピーのレッスンは、先生との一問一答では終わりません。<br class="hidden md:inline" /><span class="marker">子ども同士が英語で話し合う</span>時間を、なにより大切にしています。
+      <p
+        class="mt-10 text-center text-base md:text-lg font-bold leading-relaxed max-w-2xl mx-auto"
+        style="line-height: 2;"
+      >
+        スキッピーのレッスンは、先生との一問一答では終わりません。<br class="hidden md:inline" /><span class="marker"
+          >子ども同士が英語で話し合う</span
+        >時間を、なにより大切にしています。
       </p>
 
       <!-- real proof line -->
-      <div class="mt-8 max-w-3xl mx-auto rounded-2xl p-6 md:p-8 text-center" style="background: var(--skippy-cyan-soft);">
+      <div
+        class="mt-8 max-w-3xl mx-auto rounded-2xl p-6 md:p-8 text-center"
+        style="background: var(--skippy-cyan-soft);"
+      >
         <p class="text-base md:text-lg font-bold leading-relaxed" style="line-height: 1.9;">
-          この順番で学んできたクォッカクラスの子どもたち（3〜5年目）は、<br class="hidden md:inline" />いま<span class="marker">「読む」段階</span>に進んでいます。
+          この順番で学んできたクォッカクラスの子どもたち（3〜5年目）は、<br class="hidden md:inline" />いま<span
+            class="marker">「読む」段階</span
+          >に進んでいます。
         </p>
       </div>
       <!-- TODO(Matt): swap these three slots for real photos/video stills -->
@@ -171,20 +226,21 @@ const metadata = {
   <section class="section-cream py-16 md:py-24 px-6">
     <div class="max-w-5xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-        <!-- TODO: replace with a real photo of Matt teaching -->
-        <div class="photo-slot" style="min-height: 320px;">
-          📷 マット先生のレッスン写真がここに入ります
-        </div>
+        <Image src={mattTeachingPhoto} alt="マット先生のレッスン風景" class="w-full rounded-2xl object-cover" />
         <div>
           <span class="bubble-eyebrow mb-4">教えるのは、ずっと同じ先生</span>
           <h2 class="text-2xl md:text-3xl font-extrabold mt-4 mb-5" style="line-height: 1.5;">
             マット先生（Cartwright Matt）
           </h2>
           <p class="text-base leading-relaxed mb-4" style="line-height: 2;">
-            オーストラリア出身。{yearsInJapan}年前に来日し、2018年に内代町でスキッピー英会話を開きました。自身も大阪で子育て中の父親で、わが子をバイリンガルに育てている真っ最中です。
+            オーストラリア出身。{
+              yearsInJapan
+            }年前に来日し、2018年に内代町でスキッピー英会話を開きました。自身も大阪で子育て中の父親で、わが子をバイリンガルに育てている真っ最中です。
           </p>
           <p class="text-base leading-relaxed mb-6" style="line-height: 2;">
-            講師が入れ替わる教室ではありません。開校から{yearsRunning}年、全クラスをマット先生が担当しています。生徒全員の名前と、好きなものを知っています。
+            講師が入れ替わる教室ではありません。開校から{
+              yearsRunning
+            }年、全クラスをマット先生が担当しています。生徒全員の名前と、好きなものを知っています。
           </p>
           <a href="/about" class="font-bold" style="color: var(--skippy-magenta);">マット先生とスキッピーの物語 →</a>
         </div>
@@ -225,13 +281,19 @@ const metadata = {
         <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-2 mb-6">
           <div>
             <p class="text-sm font-bold mb-1" style="color: var(--skippy-muted);">月謝（月4回レッスン）</p>
-            <p class="font-heading font-extrabold text-5xl" style="color: var(--skippy-navy);">¥11,000<span class="text-lg font-bold" style="color: var(--skippy-muted);">／月</span></p>
+            <p class="font-heading font-extrabold text-5xl" style="color: var(--skippy-navy);">
+              ¥11,000<span class="text-lg font-bold" style="color: var(--skippy-muted);">／月</span>
+            </p>
           </div>
           <p class="text-sm font-bold" style="color: var(--skippy-magenta);">宿題アプリの利用料も込み</p>
         </div>
         <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm font-bold">
-          <li class="flex items-start gap-2"><span style="color: var(--skippy-magenta);">✓</span> レッスン45分 × 月4回</li>
-          <li class="flex items-start gap-2"><span style="color: var(--skippy-magenta);">✓</span> レッスン前後15分の英語フリータイム</li>
+          <li class="flex items-start gap-2">
+            <span style="color: var(--skippy-magenta);">✓</span> レッスン45分 × 月4回
+          </li>
+          <li class="flex items-start gap-2">
+            <span style="color: var(--skippy-magenta);">✓</span> レッスン前後15分の英語フリータイム
+          </li>
           <li class="flex items-start gap-2"><span style="color: var(--skippy-magenta);">✓</span> 入会金 0円</li>
           <li class="flex items-start gap-2"><span style="color: var(--skippy-magenta);">✓</span> 教材費 0円</li>
         </ul>
@@ -253,7 +315,10 @@ const metadata = {
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
         <!-- Wombat: recruiting -->
         <div class="skippy-card relative" style="border: 2px solid var(--skippy-magenta);">
-          <span class="absolute -top-3 left-6 rounded-full px-3 py-1 text-xs font-extrabold text-white" style="background: var(--skippy-magenta);">いま募集中</span>
+          <span
+            class="absolute -top-3 left-6 rounded-full px-3 py-1 text-xs font-extrabold text-white"
+            style="background: var(--skippy-magenta);">いま募集中</span
+          >
           <h3 class="text-xl font-extrabold mb-1 mt-2">Wombat ウォンバット</h3>
           <p class="text-sm font-bold mb-3" style="color: var(--skippy-magenta);">4〜7歳 ｜ 水 18:00 ／ 土 11:15</p>
           <p class="text-sm leading-relaxed" style="color: var(--skippy-muted); line-height: 1.9;">
@@ -312,12 +377,18 @@ const metadata = {
         <a href="/news" class="text-sm font-bold" style="color: var(--skippy-magenta);">すべて見る →</a>
       </div>
       <ul class="space-y-4">
-        {announcements.map((a) => (
-          <li class="skippy-card !py-5 flex flex-col md:flex-row md:items-center gap-1 md:gap-6">
-            <time class="text-xs font-bold shrink-0" style="color: var(--skippy-muted);">{fmt(a.data.date)}</time>
-            <a href="/news" class="font-bold hover:underline" style="color: var(--skippy-navy);">{a.data.title}</a>
-          </li>
-        ))}
+        {
+          announcements.map((a) => (
+            <li class="skippy-card !py-5 flex flex-col md:flex-row md:items-center gap-1 md:gap-6">
+              <time class="text-xs font-bold shrink-0" style="color: var(--skippy-muted);">
+                {fmt(a.data.date)}
+              </time>
+              <a href="/news" class="font-bold hover:underline" style="color: var(--skippy-navy);">
+                {a.data.title}
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </div>
   </section>
@@ -329,14 +400,30 @@ const metadata = {
         無料体験は、一年中いつでも。
       </h2>
       <p class="text-base leading-relaxed mb-3" style="color: rgb(255 255 255 / 85%); line-height: 2;">
-        入会のおすすめは、新しいコホートが始まる<span class="font-bold" style="color: var(--skippy-cyan);">4月</span>。でも、席があれば途中からでも入れます。
+        入会のおすすめは、新しいコホートが始まる<span class="font-bold" style="color: var(--skippy-cyan);">4月</span
+        >。でも、席があれば途中からでも入れます。
       </p>
       <p class="text-base leading-relaxed mb-10" style="color: rgb(255 255 255 / 85%); line-height: 2;">
         しつこい勧誘はしません。お子さんが楽しめるかどうか、まず一度見に来てください。
       </p>
-      <a href={LINE_OA_URL} target="_blank" rel="noopener noreferrer" class="btn-line text-lg" style="max-width: 400px; margin: 0 auto;">
-        <svg width="24" height="24" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M38 20.3C38 13.1 31 7.3 22.4 7.3C13.8 7.3 6.8 13.1 6.8 20.3C6.8 26.7 12.2 32.1 19.7 33.1C20.2 33.2 20.9 33.4 21.1 33.8C21.3 34.2 21.2 34.8 21.1 35.2L20.7 37.4C20.6 37.8 20.3 39 22.4 38.1C24.5 37.2 33.2 31.8 37.1 27.3C38.9 25.3 38 22.5 38 20.3Z" fill="white"/>
+      <a
+        href={LINE_OA_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-line text-lg"
+        style="max-width: 400px; margin: 0 auto;"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 44 44"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path
+            d="M38 20.3C38 13.1 31 7.3 22.4 7.3C13.8 7.3 6.8 13.1 6.8 20.3C6.8 26.7 12.2 32.1 19.7 33.1C20.2 33.2 20.9 33.4 21.1 33.8C21.3 34.2 21.2 34.8 21.1 35.2L20.7 37.4C20.6 37.8 20.3 39 22.4 38.1C24.5 37.2 33.2 31.8 37.1 27.3C38.9 25.3 38 22.5 38 20.3Z"
+            fill="white"></path>
         </svg>
         LINEで無料体験を予約する
       </a>
