@@ -1,6 +1,8 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import { LINE_OA_URL } from '~/navigation';
+import { Image } from 'astro:assets';
+import mattFamilyPhoto from '~/assets/images/matt-family-park-for-website.jpg';
 
 const year = new Date().getFullYear();
 const yearsInJapan = year - 2012;
@@ -21,8 +23,9 @@ const metadata = {
       <h1 class="text-3xl md:text-5xl font-extrabold mb-10" style="line-height: 1.4;">マット先生と、<br class="md:hidden" />スキッピーの話。</h1>
 
       <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-start">
-        <!-- TODO: real photo of Matt (with family or teaching) -->
-        <div class="photo-slot md:col-span-2" style="min-height: 300px;">📷 マット先生の写真がここに入ります</div>
+        <div class="md:col-span-2">
+          <Image src={mattFamilyPhoto} alt="マット先生と家族" class="w-full rounded-2xl object-cover" />
+        </div>
 
         <div class="md:col-span-3 space-y-5 text-base leading-relaxed" style="line-height: 2.05;">
           <!-- NOTE FOR MATT: story drafted from the current site's About section — please review the details and adjust anything that isn't quite right. -->
