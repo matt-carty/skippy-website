@@ -65,8 +65,8 @@ apps:
 analytics:
   vendors:
     plausible:
-      domain: 'skippyenglish.school'
-      # src: 'https://plausible.io/js/script.js'  # override if using a proxy
+      domain: 'plausible.skippyenglish.school'
+      src: 'https://plausible.skippyenglish.school/js/script.tagged-events.js'  # override if using a proxy
 
 ui:
   theme: 'light'
