@@ -1,10 +1,13 @@
 ---
 import favIcon from '~/assets/favicons/favicon.ico';
 import favIconSvg from '~/assets/favicons/favicon.svg';
+import maskIconSvg from '~/assets/favicons/mask-icon.svg';
 import appleTouchIcon from '~/assets/favicons/apple-touch-icon.png';
 ---
 
 <link rel="shortcut icon" href={favIcon} />
 <link rel="icon" type="image/svg+xml" href={favIconSvg.src} />
-<link rel="mask-icon" href={favIconSvg.src} color="#9966FF" />
+<link rel="mask-icon" href={maskIconSvg.src} color="#FF00A3" />
 <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIcon.src} />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="theme-color" content="#302D55" />
