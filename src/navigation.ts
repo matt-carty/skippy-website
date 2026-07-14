@@ -5,11 +5,11 @@ const LINE_OA_URL = 'https://lin.ee/R2rbgoa';
 export const headerData = {
   links: [
     {
-      text: 'マットティーチャーについて',
+      text: 'マットティーチャー',
       href: getPermalink('/about'),
     },
     {
-      text: 'クラス・スケジュール',
+      text: 'クラス',
       href: getPermalink('/classes'),
     },
     {
