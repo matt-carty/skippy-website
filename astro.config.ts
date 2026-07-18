@@ -28,7 +28,12 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
-    sitemap(),
+    sitemap({
+      // Keep noindex routes out of the sitemap. /fs is the QR-only landing
+      // page — advertising it here is what invites crawlers to an unlinked
+      // page and muddies scan counts. Add future noindex paths to this list.
+      filter: (page) => !/\/fs\/?$/.test(page),
+    }),
     mdx(),
     icon({
       include: {
