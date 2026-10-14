@@ -65,4 +65,9 @@ export const footerData = {
   `,
 };
 
-export { LINE_OA_URL };
+// 大阪市習い事・塾代助成事業 — official site + this school's 8-digit 事業者コード.
+// Fill in JUKUDAI_CODE once you have it; the code line only renders when it's set.
+const JUKUDAI_URL = 'https://www.juku-osaka.com/';
+const JUKUDAI_CODE = '';
+
+export { LINE_OA_URL, JUKUDAI_URL, JUKUDAI_CODE };

@@ -1,6 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import { LINE_OA_URL } from '~/navigation';
+import JukudaiBanner from '~/components/widgets/JukudaiBanner.astro';
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import mattTeachingPhoto from '~/assets/images/matt-teaching.jpg';
@@ -302,6 +303,22 @@ const metadata = {
         <p class="mt-6 text-xs leading-relaxed" style="color: var(--skippy-muted); line-height: 1.9;">
           フリータイムはレッスンの前後に教室で自由に過ごせる時間です。早めに来て、英語で遊んで帰れます。
         </p>
+      </div>
+
+      <!-- 塾代助成: only applies to 小5〜中3, so the condition stays right next to the number -->
+      <div class="mt-6 rounded-2xl p-6 md:p-8 text-left" style="background: var(--skippy-cyan-soft); border: 2px solid var(--skippy-cyan);">
+        <p class="text-xs font-bold mb-2" style="color: var(--skippy-muted);">大阪市習い事・塾代助成事業 対象教室</p>
+        <p class="font-heading font-extrabold text-xl md:text-2xl mb-3" style="color: var(--skippy-navy);">
+          小5〜中3のお子さまは、月1,000円で通えます。
+        </p>
+        <p class="text-sm leading-relaxed mb-3" style="line-height: 1.95;">
+          大阪市習い事・塾代助成クーポン（月1万円）をご利用の場合：<br class="hidden md:inline" />
+          月謝11,000円 − 助成10,000円 = <span class="font-extrabold">ご負担 月1,000円</span>。入会金・教材費もかかりません。
+        </p>
+        <p class="text-xs leading-relaxed mb-6" style="color: var(--skippy-muted); line-height: 1.9;">
+          ※大阪市内にお住まいの小学5年生〜中学3年生が対象です。ご利用には保護者の方から大阪市への利用登録申請が必要です。申請方法がわからない方も、LINEでお気軽にご相談ください。
+        </p>
+        <JukudaiBanner />
       </div>
     </div>
   </section>

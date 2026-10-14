@@ -2,6 +2,7 @@
 import { Icon } from 'astro-icon/components';
 import { getPermalink, getHomePermalink } from '~/utils/permalinks';
 import { headerData, LINE_OA_URL } from '~/navigation';
+import JukudaiBanner from '~/components/widgets/JukudaiBanner.astro';
 
 // Footer nav mirrors the header menu exactly (same titles, same order),
 // so the two can never drift apart again.
@@ -63,6 +64,11 @@ const INSTAGRAM_URL = 'https://www.instagram.com/skippyenglishschool/';
       >
         <Icon name="tabler:brand-instagram" class="w-7 h-7" style="color: #ffffff;" />
       </a>
+    </div>
+
+    <!-- 塾代助成 badge (official banner, unaltered) -->
+    <div class="mb-10">
+      <JukudaiBanner tone="dark" />
     </div>
 
     <!-- Address -->
