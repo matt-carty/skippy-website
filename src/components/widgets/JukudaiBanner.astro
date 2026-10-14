@@ -1,0 +1,41 @@
+---
+// Official 大阪市習い事・塾代助成事業 web banner (640×100, supplied by juku-osaka.com).
+// Logo rules: no recolouring, cropping or stretching — scale proportionally only.
+import { JUKUDAI_URL, JUKUDAI_CODE } from '~/navigation';
+
+export interface Props {
+  /** 'light' = navy text (white/cream sections), 'dark' = white text (navy footer) */
+  tone?: 'light' | 'dark';
+}
+
+const { tone = 'light' } = Astro.props;
+const textColor = tone === 'dark' ? 'rgb(255 255 255 / 80%)' : 'var(--skippy-muted)';
+---
+
+<div class="flex flex-col items-center gap-2">
+  <a
+    href={JUKUDAI_URL}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="block w-full max-w-[640px] rounded-md overflow-hidden bg-white"
+    style="padding: 6px;"
+  >
+    <img
+      src="/images/jukudai/banner-640x100.png"
+      alt="大阪市習い事・塾代助成クーポン利用できます。年間最大12万円助成"
+      width="640"
+      height="100"
+      class="w-full h-auto"
+      loading="lazy"
+      decoding="async"
+    />
+  </a>
+  <p class="text-xs text-center" style={`color: ${textColor}; line-height: 1.8;`}>
+    大阪市習い事・塾代助成事業 対象教室
+    {JUKUDAI_CODE && (
+      <>
+        （事業者コード：<span class="font-bold select-all">{JUKUDAI_CODE}</span>）
+      </>
+    )}
+  </p>
+</div>
