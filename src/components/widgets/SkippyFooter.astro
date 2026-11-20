@@ -4,9 +4,15 @@ import { getPermalink, getHomePermalink } from '~/utils/permalinks';
 import { headerData, LINE_OA_URL } from '~/navigation';
 import JukudaiBanner from '~/components/widgets/JukudaiBanner.astro';
 
-// Footer nav mirrors the header menu exactly (same titles, same order),
-// so the two can never drift apart again.
-const navLinks = [{ text: 'ホーム', href: getHomePermalink() }, ...headerData.links];
+// Footer nav mirrors the header menu (same titles, same order), so the two can't drift apart.
+// Footer-only extras are inserted after the header link they belong with.
+const footerOnlyLinks: Record<string, { text: string; href: string }[]> = {
+  [getPermalink('/classes')]: [{ text: 'カリキュラム', href: getPermalink('/curriculum') }],
+};
+const navLinks = [
+  { text: 'ホーム', href: getHomePermalink() },
+  ...headerData.links.flatMap((l) => [l, ...(footerOnlyLinks[l.href] ?? [])]),
+];
 
 const year = new Date().getFullYear();
 const INSTAGRAM_URL = 'https://www.instagram.com/skippyenglishschool/';
