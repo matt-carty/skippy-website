@@ -46,6 +46,7 @@ export const footerData = {
         { text: 'ホーム', href: getPermalink('/') },
         { text: 'マットティーチャーについて', href: getPermalink('/about') },
         { text: 'クラス・スケジュール', href: getPermalink('/classes') },
+        { text: 'カリキュラム', href: getPermalink('/curriculum') },
         { text: '無料体験レッスン', href: getPermalink('/trial') },
         { text: 'よくある質問', href: getPermalink('/faq') },
         { text: 'お知らせ', href: getPermalink('/news') },

@@ -1,0 +1,162 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { LINE_OA_URL } from '~/navigation';
+import { curriculum, GENKI_CURRICULUM_URL } from '~/data/curriculum';
+
+const metadata = {
+  title: 'カリキュラム',
+  description:
+    'スキッピー英会話の3年間のカリキュラム。Genki Englishで1年目は「自分のこと」、2年目は「毎日のこと」、3年目は物語で話す力をまとめ、そのあとフォニックスで「読む」へ進みます。',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Intro -->
+  <section class="py-14 md:py-20 px-6 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <p class="eyebrow-label mb-3">CURRICULUM</p>
+      <h1 class="text-3xl md:text-5xl font-extrabold mb-5">3年間のカリキュラム</h1>
+      <p class="text-base md:text-lg leading-relaxed max-w-2xl" style="line-height: 2;">
+        スキッピーのカリキュラムは、世界中の子ども英語教育で使われている Genki
+        English。1レッスンに1つのテーマ（質問と答え）を、歌・動き・ゲームで覚えます。1年目は「自分のこと」、2年目は「毎日のこと」、3年目は物語で話す力をまとめて、そのあと<span
+          class="marker">フォニックスで「読む」</span
+        >に進みます。
+      </p>
+    </div>
+  </section>
+
+  <!-- Year cards -->
+  <section class="section-cream py-14 md:py-20 px-6">
+    <div class="max-w-3xl mx-auto space-y-6">
+      {
+        curriculum.map((y) => (
+          <article class="skippy-card">
+            <p class="font-heading text-2xl font-extrabold mb-1" style="color: var(--skippy-magenta);">
+              {y.label}
+            </p>
+            <h2 class="text-lg md:text-xl font-extrabold mb-4" style="line-height: 1.6;">
+              {y.theme}
+            </h2>
+
+            <p class="text-xs font-extrabold mb-2" style="color: var(--skippy-muted);">
+              おもなテーマ
+            </p>
+            <ul class="flex flex-wrap gap-2 mb-5">
+              {y.topics.map((t) => (
+                <li
+                  class="rounded-full px-3 py-1 text-xs font-bold"
+                  style="background: var(--skippy-cyan-soft); border: 1px solid var(--skippy-cyan); color: var(--skippy-navy);"
+                >
+                  {t}
+                </li>
+              ))}
+            </ul>
+
+            <p class="text-xs font-extrabold mb-2" style="color: var(--skippy-muted);">
+              1年の終わりには、こんなことが言えるように
+            </p>
+            <ul class="space-y-2 mb-5">
+              {y.phrases.map((p) => (
+                <li class="text-sm" style="line-height: 1.8;">
+                  <span class="font-bold" lang="en">
+                    {p.en}
+                  </span>
+                  <span style="color: var(--skippy-muted);">（{p.ja}）</span>
+                </li>
+              ))}
+              {y.note && (
+                <li class="text-sm font-bold" style="line-height: 1.8;">
+                  ＋ {y.note}
+                </li>
+              )}
+            </ul>
+
+            <details class="rounded-xl" style="border: 1px solid var(--skippy-cyan);">
+              <summary class="cursor-pointer px-4 py-3 text-sm font-extrabold" style="color: var(--skippy-navy);">
+                全レッスン一覧を見る
+              </summary>
+              <ol class="px-4 pb-4 space-y-2">
+                {y.lessons.map((lesson) => (
+                  <li class="flex gap-3 text-sm" style="line-height: 1.6;">
+                    <span class="font-bold shrink-0 text-right" style="min-width: 2em; color: var(--skippy-magenta);">
+                      {lesson.no}
+                    </span>
+                    <span class="min-w-0 break-words">
+                      <span class="font-bold" lang="en">
+                        {lesson.title}
+                      </span>
+                      <span class="block text-xs" style="color: var(--skippy-muted);">
+                        {lesson.ja}
+                      </span>
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </details>
+          </article>
+        ))
+      }
+
+      <!-- After year 3 -->
+      <article class="skippy-card" style="border: 2px solid var(--skippy-magenta);">
+        <p class="font-heading text-2xl font-extrabold mb-1" style="color: var(--skippy-magenta);">3年目のあと</p>
+        <h2 class="text-lg md:text-xl font-extrabold mb-3">Genki Phonics で「読む」へ</h2>
+        <p class="text-sm leading-relaxed mb-4" style="line-height: 1.95;">
+          話す力がついたら、次は読む。3年目の途中からは Genki Phonics
+          で、英語を「読む」練習を始めます。いまのクォッカクラスが、この段階です。
+        </p>
+        <a href="/classes" class="text-sm font-extrabold underline" style="color: var(--skippy-navy);"
+          >クラス・スケジュールを見る →</a
+        >
+      </article>
+    </div>
+  </section>
+
+  <!-- Notes -->
+  <section class="py-14 md:py-20 px-6 bg-white">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-extrabold mb-6">進め方について</h2>
+      <ul class="list-disc pl-5 space-y-3 text-sm md:text-base" style="line-height: 1.95;">
+        <li>ペースは週1テーマが目安です。クラスの様子に合わせて、復習を入れたり進み方を調整したりします。</li>
+        <li>ハロウィン・クリスマスなど季節のレッスンもあります（クリスマスは2週間）。</li>
+        <li>
+          年度の途中からでも入会できます。席があれば、追いつくためのフォローをします。いちばんのおすすめは4月です。
+        </li>
+        <li>
+          カリキュラムの詳細（英語）：<a
+            href={GENKI_CURRICULUM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-bold underline"
+            style="color: var(--skippy-navy);">Genki English 公式サイト</a
+          >
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CTA (same block as classes.astro) -->
+  <section class="section-cyan-soft py-14 md:py-20 px-6">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-2xl md:text-3xl font-extrabold mb-4">うちの子はどのクラス？</h2>
+      <p class="text-base leading-relaxed mb-8" style="line-height: 2;">
+        4〜7歳なら、募集中のウォンバットクラスへ。それ以外の年齢のお子さんも、まず無料体験でレベルを見て、合うクラスがあるか一緒に確認します。まずはLINEでご相談ください。
+      </p>
+      <a href={LINE_OA_URL} target="_blank" rel="noopener noreferrer" class="btn-line">
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 44 44"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path
+            d="M38 20.3C38 13.1 31 7.3 22.4 7.3C13.8 7.3 6.8 13.1 6.8 20.3C6.8 26.7 12.2 32.1 19.7 33.1C20.2 33.2 20.9 33.4 21.1 33.8C21.3 34.2 21.2 34.8 21.1 35.2L20.7 37.4C20.6 37.8 20.3 39 22.4 38.1C24.5 37.2 33.2 31.8 37.1 27.3C38.9 25.3 38 22.5 38 20.3Z"
+            fill="white"></path>
+        </svg>
+        LINEで相談・体験予約
+      </a>
+    </div>
+  </section>
+</Layout>
